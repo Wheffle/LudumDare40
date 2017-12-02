@@ -124,7 +124,7 @@ if (instance_exists(target))
 }
 else if (speed &gt; 0)
 {
-    speed -= accel*2;
+    speed -= accel;
     if (speed &lt; 0) speed = 0;
 }
 

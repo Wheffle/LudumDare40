@@ -62,12 +62,12 @@ switch(upgrade_type)
         break;
         
     case upgradetype.bombsize:
-        name = "pulse size upgrade";
+        name = "pulse upgrade";
         portrait = portrait_bomb;
         break;
         
     case upgradetype.bombcharge:
-        name = "pulse recharge upgrade";
+        name = "recharger upgrade";
         portrait = portrait_bomb;
         break;
 }
@@ -130,7 +130,8 @@ falling = false;
     case upgradetype.thrust:
         with(obj_player_properties)
         {
-            thrust_force += 5;
+            thrust_force += 10;
+            if(thrust_force &gt; 80) thrust_force = 80;
         }
         break;
     
@@ -154,7 +155,7 @@ falling = false;
     case upgradetype.firetime:
         with(obj_player_properties)
         {
-            fire_timer_set -= 5;
+            fire_timer_set -= 6;
             if (fire_timer_set &lt; 5) fire_timer_set = 5;
         }
         break;
@@ -162,7 +163,7 @@ falling = false;
     case upgradetype.bombsize:
         with(obj_player_properties)
         {
-            bombsize += 0.15;
+            bombsize += 0.25;
         }
         break;
         

@@ -176,6 +176,11 @@ if (mining_timer &gt; 0)
         phy_active = true;
         
         spawn_sanguinite_enemies(cargo);
+        
+        if (instance_number(obj_sanguinite0) &lt;= 1)
+        {
+            spawn_enemy_wave();
+        }
     }
 }
 else

@@ -58,6 +58,15 @@ danger = 0;
 spawn_timer_set = room_speed*10;
 spawn_timer = spawn_timer_set;
 
+draw_set_font(font_small);
+message = "";
+message_color = c_white;
+message_timer = 0;
+message_width = 0;
+message_height = 0;
+
+show_popup("Objective: retrieve all sanguinite.", c_white, 10);
+
 </string>
           </argument>
         </arguments>
@@ -130,27 +139,8 @@ if (instance_number(parent_enemy) &lt; max_enemies)
     }
     else
     {
-        spawn_timer = spawn_timer_set;
-        
-        var found = false;
-        var xx = 0;
-        var yy = 0;
-        with(obj_terrain)
-        {
-            while(!found)
-            {
-                var grid_x = irandom(width-1);
-                var grid_y = irandom(height-1);
-                if (ds_grid_get(grid, grid_x, grid_y))
-                {
-                    xx = grid_x*CELL + (CELL div 2);
-                    yy = grid_y*CELL + (CELL div 2);
-                    found = true;
-                }
-            }
-        }
-        
-        instance_create(xx, yy, obj_enemy1);
+        spawn_timer = spawn_timer_set;        
+        spawn_random_enemy();
     }   
 }
 </string>
