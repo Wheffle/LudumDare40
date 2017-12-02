@@ -213,7 +213,8 @@ physics_pause_enable(global.pause);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>room_restart();
+            <string>global.planet_seed = randomize();
+room_restart();
 </string>
           </argument>
         </arguments>
