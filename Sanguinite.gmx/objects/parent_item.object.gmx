@@ -29,6 +29,9 @@
 accel = 0.1;
 top_speed = 3;
 direction = 270;
+mass = 1;
+
+drone_id = noone;
 </string>
           </argument>
         </arguments>

@@ -16,10 +16,12 @@
     <sprite>sprites\s_enemy1</sprite>
     <sprite>sprites\s_bullet</sprite>
     <sprite>sprites\s_part_moon</sprite>
+    <sprite>sprites\s_sanguinite</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\tile_terrain1</background>
     <background>background\tileset_terrain1</background>
+    <background>background\tile_sanguinite</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -95,6 +97,7 @@
       <object>objects\parent_item</object>
       <object>objects\obj_drone_dead</object>
       <object>objects\obj_artifact</object>
+      <object>objects\obj_sanguinite0</object>
     </objects>
     <objects name="Enemies">
       <object>objects\parent_enemy</object>

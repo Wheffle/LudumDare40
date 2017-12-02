@@ -44,6 +44,8 @@ cargo = noone;
 cargo_timer_set = room_speed;
 cargo_timer = 0;
 
+mining_timer = 0;
+
 phy_fixed_rotation = true;
 drone_mass = phy_mass;
 
@@ -103,8 +105,11 @@ flame_image_number = sprite_get_number(s_flame);
 
 if (cargo != noone)
 {
-    cargo.x = x;
-    cargo.y = y+14;
+    if (mining_timer &lt;= 0)
+    {
+        cargo.x = x;
+        cargo.y = y+14;
+    }
     
     if (position_meeting(cargo.x, cargo.y, obj_dropship))
     {
@@ -136,31 +141,49 @@ if (cargo != noone)
             <string>if (global.pause) exit;
 
 // Player input
-var move_right = keyboard_check(vk_right) or keyboard_check(ord('D'));
-var move_left = keyboard_check(vk_left) or keyboard_check(ord('A'));
-var move_up = keyboard_check(vk_up) or keyboard_check(ord('W'));
-var move_down = keyboard_check(vk_down) or keyboard_check(ord('S'));
-
-var mx = 0;
-var my = 0;
-
-if (move_right) mx += 1;
-if (move_left) mx -= 1;
-if (move_up) my -= 1;
-if (move_down) my += 1;
-
 thrusting = false;
-if (mx != 0 or my != 0)
+if (mining_timer &gt; 0)
 {
-    thrust_angle = point_direction(0, 0, mx, my);
-    var fx = lengthdir_x(thrust_force, thrust_angle);
-    var fy = lengthdir_y(thrust_force, thrust_angle);
+    if (cargo and mining_timer % 15 == 0)
+    {
+        var vfx = vfx_create_moon(cargo.x, cargo.y, 0.75, 0.25, 90, 30, 0.45, 0.05, c_maroon);
+        vfx.image_speed = 0.25;
+    }
+
+    mining_timer--;
+    if (mining_timer &lt;= 0)
+    {
+        with(cargo) mined = true;
+        phy_active = true;
+    }
+}
+else
+{
+    var move_right = keyboard_check(vk_right) or keyboard_check(ord('D'));
+    var move_left = keyboard_check(vk_left) or keyboard_check(ord('A'));
+    var move_up = keyboard_check(vk_up) or keyboard_check(ord('W'));
+    var move_down = keyboard_check(vk_down) or keyboard_check(ord('S'));
     
-    physics_apply_local_force(0, 0, fx, fy);
+    var mx = 0;
+    var my = 0;
     
-    // Flame image
-    thrusting = true;
-    flame_image_index = (flame_image_index + flame_image_speed) % flame_image_number;
+    if (move_right) mx += 1;
+    if (move_left) mx -= 1;
+    if (move_up) my -= 1;
+    if (move_down) my += 1;
+    
+    if (mx != 0 or my != 0)
+    {
+        thrust_angle = point_direction(0, 0, mx, my);
+        var fx = lengthdir_x(thrust_force, thrust_angle);
+        var fy = lengthdir_y(thrust_force, thrust_angle);
+        
+        physics_apply_local_force(0, 0, fx, fy);
+        
+        // Flame image
+        thrusting = true;
+        flame_image_index = (flame_image_index + flame_image_speed) % flame_image_number;
+    }
 }
 
 // Cargo Pickup
