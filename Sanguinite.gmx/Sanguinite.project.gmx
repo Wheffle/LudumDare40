@@ -9,9 +9,14 @@
     <sprite>sprites\s_square</sprite>
     <sprite>sprites\s_circle</sprite>
     <sprite>sprites\s_flame</sprite>
+    <sprite>sprites\s_grapple</sprite>
+    <sprite>sprites\s_dropship</sprite>
+    <sprite>sprites\s_dropship_flame</sprite>
+    <sprite>sprites\s_artifact</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\tile_terrain1</background>
+    <background>background\tileset_terrain1</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -48,6 +53,11 @@
         <script>scripts\terrain_preset_cheese.gml</script>
         <script>scripts\terrain_preset_machined.gml</script>
       </scripts>
+      <script>scripts\terrain_create_landing_zone.gml</script>
+    </scripts>
+    <scripts name="Planet">
+      <script>scripts\planet_begin.gml</script>
+      <script>scripts\deploy_drone.gml</script>
     </scripts>
     <scripts name="Utility">
       <script>scripts\ceil2.gml</script>
@@ -64,6 +74,10 @@
     </objects>
     <objects name="Player">
       <object>objects\obj_drone</object>
+      <object>objects\obj_dropship</object>
+    </objects>
+    <objects name="Items">
+      <object>objects\obj_artifact</object>
     </objects>
   </objects>
   <rooms name="rooms">

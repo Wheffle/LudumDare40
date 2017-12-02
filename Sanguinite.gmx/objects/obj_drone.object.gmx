@@ -3,7 +3,7 @@
   <spriteName>s_circle</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>-10</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -25,9 +25,16 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>thrust_force = 40;
+            <string>image_speed = 0;
+image_index = 0;
+
+thrust_force = 40;
 thrust_angle = 0;
 thrusting = false;
+
+cargo = noone;
+cargo_timer_set = room_speed;
+cargo_timer = 0;
 
 phy_fixed_rotation = true;
 
@@ -36,8 +43,45 @@ half_height = sprite_height div 2;
 
 flame_image = s_flame;
 flame_image_index = 0;
-flame_image_speed = 0.25;
+flame_image_speed = 0.50;
 flame_image_number = sprite_get_number(s_flame);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (cargo != noone)
+{
+    cargo.x = x;
+    cargo.y = y+14;
+    
+    with(cargo)
+    {
+        if (position_meeting(x, y, obj_dropship))
+        {
+            other.cargo = noone;
+            other.image_index = 0;
+            instance_destroy();
+        }
+    }
+}
 </string>
           </argument>
         </arguments>
@@ -88,6 +132,21 @@ if (mx != 0 or my != 0)
     flame_image_index = (flame_image_index + flame_image_speed) % flame_image_number;
 }
 
+// Cargo Pickup
+if (cargo_timer &gt; 0)
+{
+    cargo_timer--;
+}
+else if (cargo == noone)
+{
+    var artifact = instance_position(x, y+7, obj_artifact);
+    if (artifact)
+    {
+        cargo = artifact;
+        image_index = 1;
+    }
+}
+
 // Outside Room
 if (phy_position_x &lt; 0)
 {
@@ -111,6 +170,31 @@ else if (phy_position_y &gt;= room_height-1)
     phy_speed_y = 0;
 }
 
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="6" enumb="54">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>cargo = noone;
+cargo_timer = cargo_timer_set;
+image_index = 0;
 </string>
           </argument>
         </arguments>
