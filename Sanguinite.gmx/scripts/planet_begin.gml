@@ -10,7 +10,7 @@ with(obj_terrain)
         ds_list_add(list, id);
     }
     
-    var mines = 2;
+    var mines = global.planet_mines;
     ds_list_shuffle(list);
     for (var i = 0; i < ds_list_size(list); i++)
     {
@@ -34,6 +34,32 @@ with(obj_terrain)
             instance_create(xx, yy, item_type);
         }
     }
+    
+    // If there weren't enough pockets, make sure there are the right number
+    // of mines and at least one artifact
+    while(mines > 0)
+    {
+        var rand_x = irandom(width-1);
+        var rand_y = irandom(height-1);
+        if (!ds_grid_get(grid, rand_x, rand_y))
+        {
+            var xx = rand_x*CELL + cell_half;
+            var yy = rand_y*CELL + cell_half;
+            instance_create(xx, yy, obj_sanguinite0);
+        }
+    }
+    
+    while (instance_number(obj_artifact) == 0)
+    {
+        var rand_x = irandom(width-1);
+        var rand_y = irandom(height-1);
+        if (!ds_grid_get(grid, rand_x, rand_y))
+        {
+            var xx = rand_x*CELL + cell_half;
+            var yy = rand_y*CELL + cell_half;
+            instance_create(xx, yy, obj_artifact);
+        }
+    }
 
     ds_list_destroy(list);
     
@@ -42,10 +68,10 @@ with(obj_terrain)
     view_object[0] = obj_dropship;
     
     // Spawn random-ass enemies
-    repeat(10)
+    /*repeat(10)
     {
         var ran_x = 25 + random(room_width-50);
         var ran_y = 25 + random(room_height-50);
         instance_create(ran_x, ran_y, obj_enemy1);
-    }
+    }*/
 }

@@ -3,7 +3,7 @@
 with(argument0)
 {
     hp -= argument1;
-    if (hp == 0)
+    if (hp <= 0)
     {
         instance_create(x, y, obj_drone_dead);
         with(obj_dropship) alarm[0] = 120;
