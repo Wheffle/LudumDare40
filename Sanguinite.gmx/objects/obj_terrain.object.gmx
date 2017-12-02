@@ -30,6 +30,9 @@ height = room_height div CELL;
 
 grid = ds_grid_create(width, height);
 
+dropship_spawn_x = 37;
+dropship_spawn_y = -75;
+
 terrain_graphic = global.planet_tile;
 terrain_color = global.planet_color;
 
@@ -167,6 +170,9 @@ idx = 0;
             break;
             
         case terraingen.tileset:
+            //create landing zone
+            terrain_create_landing_zone();
+            
             //assign tiles to grid cells appropriately
             show_debug_message("building tileset...");
             grid_create_tiles();
@@ -182,7 +188,7 @@ idx = 0;
             gen_time = gen_time div 1000;
             show_debug_message("elapsed time: " + string(gen_time) + "ms");
             gen_active = false;            
-            instance_create(15, 15, obj_drone);
+            planet_begin();
             break;
     }
 }
