@@ -35,7 +35,8 @@ thrusting = false;
 hp_max = 100;
 hp = hp_max;
 firepower = 1;
-firespeed = 5;
+firespeed = 4;
+firearea = 0;
 
 fire_timer_set = 30;
 fire_timer = 0;
@@ -56,6 +57,9 @@ flame_image = s_flame;
 flame_image_index = 0;
 flame_image_speed = 0.50;
 flame_image_number = sprite_get_number(s_flame);
+flame_image_blend = c_red;
+
+set_drone_properties();
 </string>
           </argument>
         </arguments>
@@ -79,6 +83,7 @@ flame_image_number = sprite_get_number(s_flame);
           <argument>
             <kind>1</kind>
             <string>item_drop();
+with(obj_player_properties) drones--;
 </string>
           </argument>
         </arguments>
@@ -279,7 +284,7 @@ if (fire_timer &lt;= 0)
 {
     fire_timer = fire_timer_set;
     var dir = point_direction(x, y, mouse_x, mouse_y);
-    fire_bullet(dir, firespeed, firepower);
+    fire_bullet(dir, firespeed, firepower, firearea);
 }
 </string>
           </argument>
@@ -310,7 +315,7 @@ if (thrusting)
     var flame_angle = angle_add(thrust_angle, 180);
     var xx = x + lengthdir_x(half_width, flame_angle);
     var yy = y + lengthdir_y(half_width, flame_angle);
-    draw_sprite_ext(flame_image, flame_image_index, xx, yy, 1, 1, flame_angle, c_white, 1);
+    draw_sprite_ext(flame_image, flame_image_index, xx, yy, 1, 1, flame_angle, flame_image_blend, 1);
 }
 </string>
           </argument>

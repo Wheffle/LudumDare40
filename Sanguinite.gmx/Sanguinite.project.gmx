@@ -17,6 +17,14 @@
     <sprite>sprites\s_bullet</sprite>
     <sprite>sprites\s_part_moon</sprite>
     <sprite>sprites\s_sanguinite</sprite>
+    <sprites name="Potraits">
+      <sprite>sprites\portrait_none</sprite>
+      <sprite>sprites\portrait_deaddrone</sprite>
+      <sprite>sprites\portrait_weapon</sprite>
+      <sprite>sprites\portrait_armor</sprite>
+      <sprite>sprites\portrait_thruster</sprite>
+      <sprite>sprites\portrait_sanguinite</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\tile_terrain1</background>
@@ -28,11 +36,11 @@
     <scripts name="Terrain">
       <script>scripts\terrain_generate.gml</script>
       <script>scripts\terrain_get_cell.gml</script>
+      <script>scripts\terrain_create_landing_zone.gml</script>
       <script>scripts\grid_noise.gml</script>
       <script>scripts\grid_smooth.gml</script>
       <script>scripts\grid_perlinize_surface.gml</script>
       <script>scripts\perlin_1d.gml</script>
-      <script>scripts\grid_create_tiles.gml</script>
       <scripts name="Pockets">
         <script>scripts\grid_find_pockets.gml</script>
         <script>scripts\grid_connect_pockets.gml</script>
@@ -58,7 +66,10 @@
         <script>scripts\terrain_preset_cheese.gml</script>
         <script>scripts\terrain_preset_machined.gml</script>
       </scripts>
-      <script>scripts\terrain_create_landing_zone.gml</script>
+      <scripts name="Tiles">
+        <script>scripts\grid_create_tiles.gml</script>
+        <script>scripts\get_tile_index.gml</script>
+      </scripts>
     </scripts>
     <scripts name="Planet">
       <script>scripts\planet_begin.gml</script>
@@ -68,6 +79,7 @@
       <script>scripts\item_pickup.gml</script>
       <script>scripts\item_drop.gml</script>
       <script>scripts\item_get.gml</script>
+      <script>scripts\set_drone_properties.gml</script>
     </scripts>
     <scripts name="Utility">
       <script>scripts\ceil2.gml</script>
@@ -78,7 +90,15 @@
     <scripts name="Lazy Particles">
       <script>scripts\vfx_create_moon.gml</script>
     </scripts>
+    <scripts name="Draw">
+      <script>scripts\draw_ui.gml</script>
+      <script>scripts\draw_bar.gml</script>
+      <script>scripts\draw_portrait.gml</script>
+    </scripts>
   </scripts>
+  <fonts name="fonts">
+    <font>fonts\font_small</font>
+  </fonts>
   <objects name="objects">
     <object>objects\ctrl_init</object>
     <object>objects\ctrl_planet</object>
@@ -89,6 +109,7 @@
       <object>objects\obj_collider</object>
     </objects>
     <objects name="Player">
+      <object>objects\obj_player_properties</object>
       <object>objects\obj_drone</object>
       <object>objects\obj_dropship</object>
       <object>objects\obj_bullet</object>
@@ -98,6 +119,8 @@
       <object>objects\obj_drone_dead</object>
       <object>objects\obj_artifact</object>
       <object>objects\obj_sanguinite0</object>
+      <object>objects\obj_sanguinite1</object>
+      <object>objects\obj_sanguinite2</object>
     </objects>
     <objects name="Enemies">
       <object>objects\parent_enemy</object>
