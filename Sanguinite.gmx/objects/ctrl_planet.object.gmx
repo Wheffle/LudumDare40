@@ -54,6 +54,10 @@ switch(terrain_type)
         break;
 }
 
+danger = 0;
+spawn_timer_set = room_speed*10;
+spawn_timer = spawn_timer_set;
+
 </string>
           </argument>
         </arguments>
@@ -76,7 +80,7 @@ switch(terrain_type)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
+            <string>if (global.pause) exit;
 
 // Create colliders around the player
 
@@ -114,6 +118,40 @@ if (instance_exists(obj_drone))
             instance_destroy();
         }
     }
+}
+
+// Spawn enemies
+var max_enemies = 5 + (danger*15);
+if (instance_number(parent_enemy) &lt; max_enemies)
+{
+    if (spawn_timer &gt; 0)
+    {
+        spawn_timer -= 1 + (0.50*spawn_timer_set*danger) / room_speed;
+    }
+    else
+    {
+        spawn_timer = spawn_timer_set;
+        
+        var found = false;
+        var xx = 0;
+        var yy = 0;
+        with(obj_terrain)
+        {
+            while(!found)
+            {
+                var grid_x = irandom(width-1);
+                var grid_y = irandom(height-1);
+                if (ds_grid_get(grid, grid_x, grid_y))
+                {
+                    xx = grid_x*CELL + (CELL div 2);
+                    yy = grid_y*CELL + (CELL div 2);
+                    found = true;
+                }
+            }
+        }
+        
+        instance_create(xx, yy, obj_enemy1);
+    }   
 }
 </string>
           </argument>

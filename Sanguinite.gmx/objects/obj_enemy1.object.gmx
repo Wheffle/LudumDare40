@@ -60,6 +60,8 @@ top_speed = 3;
         var moon = vfx_create_moon(x, y, 0.5, 0.25, 0, 180, 0.7, 0.05, c_red);
         moon.image_speed = 0.5;
     }
+    
+    vfx_create_moon(x, y, 0.5, 0.25, 0, 180, 0.7, 0.05, c_white);
 }
 </string>
           </argument>

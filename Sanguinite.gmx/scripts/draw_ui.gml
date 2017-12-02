@@ -6,25 +6,50 @@ var xx = 8;
 var yy = 8;
 
 var bar_width = 100;
-var bar_height = 16;
+var bar_height = 14;
 
-// Draw drone stats
+// Draw drone stuff
 with(obj_drone)
 {
     var pct = hp / hp_max;
     draw_bar(xx, yy, xx+bar_width, yy+bar_height, c_green, "Drone", c_white, pct);
-    yy += 24;
+    yy += 22;
+    
+    pct = 1-(bomb_timer/bombcharge);
+    draw_bar(xx, yy, xx+bar_width, yy+bar_height, c_blue, "Pulse Charge", c_white, pct);
+    yy += 22;
+    
+    switch (rightclick_state)
+    {
+        case secondary.drop:
+            draw_set_color(c_yellow);
+            draw_text(xx, yy, "Right Click:#  drop cargo");
+            break;
+            
+        case secondary.bomb:
+            draw_set_color(c_aqua);
+            draw_text(xx, yy, "Right Click:#  pulse bomb");
+            break;
+            
+        case secondary.liftoff:
+            draw_set_color(c_green);
+            draw_text(xx, yy, "Right Click:#  leave planet");
+            break;
+    }
+    
+    yy += 32;
     
     if (cargo != noone)
     {
+        draw_portrait(xx, yy, cargo.portrait);
+        yy += 54;   
+        
         draw_set_color(c_white);
         draw_text(xx, yy, "Cargo: " + cargo.name);
-        yy += 20;
-        
-        draw_portrait(xx, yy, cargo.portrait);
-        yy += 54;
-        
+        yy += 20;    
     }
+    
+    
 }
 
 // Draw lives
@@ -45,9 +70,13 @@ with(obj_dropship)
     var pct = sanguinite / sanguinite_max;
     draw_bar(xx, yy, xx+bar_width, yy+bar_height, c_maroon, "Sanguinite", c_white, pct);
 }
-yy += 20;
+yy += 22;
 
-
+// Draw planet danger
+with(ctrl_planet)
+{
+    draw_bar(xx, yy, xx+bar_width, yy+bar_height, c_fuchsia, "Danger", c_white, danger);
+}
 
 
 

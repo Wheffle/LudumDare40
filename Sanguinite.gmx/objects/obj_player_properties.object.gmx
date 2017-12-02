@@ -31,6 +31,8 @@ firepower = 1;
 firespeed = 4;
 fire_timer_set = 30;
 firearea = 0;
+bombsize = 1;
+bombcharge = 10*room_speed;
 
 drones = 5;
 </string>

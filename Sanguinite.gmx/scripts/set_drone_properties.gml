@@ -11,6 +11,8 @@ with(obj_player_properties)
     other.firespeed = firespeed;
     other.fire_timer_set = fire_timer_set;
     other.firearea = firearea;
+    other.bombsize = bombsize;
+    other.bombcharge = bombcharge;
     
     if (thrust_force < 60)
     {
