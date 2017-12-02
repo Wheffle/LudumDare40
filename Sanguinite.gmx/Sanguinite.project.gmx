@@ -9,10 +9,12 @@
     <sprite>sprites\s_square</sprite>
     <sprite>sprites\s_circle</sprite>
     <sprite>sprites\s_flame</sprite>
-    <sprite>sprites\s_grapple</sprite>
     <sprite>sprites\s_dropship</sprite>
     <sprite>sprites\s_dropship_flame</sprite>
     <sprite>sprites\s_artifact</sprite>
+    <sprite>sprites\s_enemy1</sprite>
+    <sprite>sprites\s_bullet</sprite>
+    <sprite>sprites\s_part_moon</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\tile_terrain1</background>
@@ -58,9 +60,16 @@
     <scripts name="Planet">
       <script>scripts\planet_begin.gml</script>
       <script>scripts\deploy_drone.gml</script>
+      <script>scripts\fire_bullet.gml</script>
     </scripts>
     <scripts name="Utility">
       <script>scripts\ceil2.gml</script>
+      <script>scripts\smooth_angle.gml</script>
+      <script>scripts\direction_intercept.gml</script>
+      <script>scripts\angle_add.gml</script>
+    </scripts>
+    <scripts name="Lazy Particles">
+      <script>scripts\vfx_create_moon.gml</script>
     </scripts>
   </scripts>
   <objects name="objects">
@@ -75,9 +84,17 @@
     <objects name="Player">
       <object>objects\obj_drone</object>
       <object>objects\obj_dropship</object>
+      <object>objects\obj_bullet</object>
     </objects>
     <objects name="Items">
       <object>objects\obj_artifact</object>
+    </objects>
+    <objects name="Enemies">
+      <object>objects\parent_enemy</object>
+      <object>objects\obj_enemy1</object>
+    </objects>
+    <objects name="Lazy Particles">
+      <object>objects\vfx_moon</object>
     </objects>
   </objects>
   <rooms name="rooms">

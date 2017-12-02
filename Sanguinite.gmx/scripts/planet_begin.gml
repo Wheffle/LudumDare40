@@ -18,4 +18,12 @@ with(obj_terrain)
     // Spawn Dropship
     var dropship = instance_create(dropship_spawn_x, dropship_spawn_y, obj_dropship);
     view_object[0] = obj_dropship;
+    
+    // Spawn random-ass enemies
+    repeat(10)
+    {
+        var ran_x = 25 + random(room_width-50);
+        var ran_y = 25 + random(room_height-50);
+        instance_create(ran_x, ran_y, obj_enemy1);
+    }
 }
