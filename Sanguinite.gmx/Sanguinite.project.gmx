@@ -7,7 +7,8 @@
   <sounds name="sound"/>
   <sprites name="sprites">
     <sprite>sprites\s_square</sprite>
-    <sprite>sprites\s_circle</sprite>
+    <sprite>sprites\s_drone</sprite>
+    <sprite>sprites\s_drone_dead</sprite>
     <sprite>sprites\s_flame</sprite>
     <sprite>sprites\s_dropship</sprite>
     <sprite>sprites\s_dropship_flame</sprite>
@@ -61,6 +62,10 @@
       <script>scripts\planet_begin.gml</script>
       <script>scripts\deploy_drone.gml</script>
       <script>scripts\fire_bullet.gml</script>
+      <script>scripts\damage_drone.gml</script>
+      <script>scripts\item_pickup.gml</script>
+      <script>scripts\item_drop.gml</script>
+      <script>scripts\item_get.gml</script>
     </scripts>
     <scripts name="Utility">
       <script>scripts\ceil2.gml</script>
@@ -87,6 +92,8 @@
       <object>objects\obj_bullet</object>
     </objects>
     <objects name="Items">
+      <object>objects\parent_item</object>
+      <object>objects\obj_drone_dead</object>
       <object>objects\obj_artifact</object>
     </objects>
     <objects name="Enemies">
@@ -101,7 +108,10 @@
     <room>rooms\rm_init</room>
     <room>rooms\rm_planet_small</room>
   </rooms>
-  <constants number="1">
+  <constants number="4">
+    <constant name="EV_ITEM_GET">2</constant>
+    <constant name="EV_ITEM_DROP">1</constant>
+    <constant name="EV_ITEM_PICKUP">0</constant>
     <constant name="CELL">25</constant>
   </constants>
   <help>
