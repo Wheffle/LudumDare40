@@ -25,42 +25,15 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// Set up gui surface
-surface_resize(application_surface, view_wview[0], view_hview[0]);
-display_set_gui_size(view_wview[0], view_hview[0]);
+            <string>hp = 3;
+target = noone;
+range = 500;
 
-// Init globals
-global.pause = false;
-global.planet_name = "none";
-global.planet_seed = randomize();
-global.planet_type = terraintype.none;
-global.planet_tile = tile_terrain1;
-global.planet_color = c_white;
+accel = 0.05;
+top_speed = 3;
 
-// Set up enums
-enum terraingen
-{
-    start,
-    noise,
-    smoothing,
-    perlin,
-    find_rooms,
-    prune_rooms,
-    connect_rooms,
-    tileset,
-    complete
-}
-
-enum terraintype
-{
-    none,
-    worms,
-    antfarm,
-    cheese,
-    machined
-}
-
-room_goto(rm_planet_small);
+attack_timer_set = room_speed;
+attack_timer = 0;
 </string>
           </argument>
         </arguments>

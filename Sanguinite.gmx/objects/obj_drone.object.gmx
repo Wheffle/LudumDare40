@@ -32,6 +32,14 @@ thrust_force = 40;
 thrust_angle = 0;
 thrusting = false;
 
+hp_max = 100;
+hp = hp_max;
+firepower = 1;
+firespeed = 5;
+
+fire_timer_set = 30;
+fire_timer = 0;
+
 cargo = noone;
 cargo_timer_set = room_speed;
 cargo_timer = 0;
@@ -67,7 +75,9 @@ flame_image_number = sprite_get_number(s_flame);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (cargo != noone)
+            <string>if (global.pause) exit;
+
+if (cargo != noone)
 {
     cargo.x = x;
     cargo.y = y+14;
@@ -104,7 +114,9 @@ flame_image_number = sprite_get_number(s_flame);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// Player input
+            <string>if (global.pause) exit;
+
+// Player input
 var move_right = keyboard_check(vk_right) or keyboard_check(ord('D'));
 var move_left = keyboard_check(vk_left) or keyboard_check(ord('A'));
 var move_up = keyboard_check(vk_up) or keyboard_check(ord('W'));
@@ -146,6 +158,9 @@ else if (cargo == noone)
         image_index = 1;
     }
 }
+
+// Weapon fire timer
+if (fire_timer &gt; 0) fire_timer--;
 
 // Outside Room
 if (phy_position_x &lt; 0)
@@ -192,9 +207,41 @@ else if (phy_position_y &gt;= room_height-1)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>cargo = noone;
+            <string>if (global.pause) exit;
+
+cargo = noone;
 cargo_timer = cargo_timer_set;
 image_index = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="6" enumb="50">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (global.pause) exit;
+
+if (fire_timer &lt;= 0)
+{
+    fire_timer = fire_timer_set;
+    var dir = point_direction(x, y, mouse_x, mouse_y);
+    fire_bullet(dir, firespeed, firepower);
+}
 </string>
           </argument>
         </arguments>
@@ -221,7 +268,7 @@ image_index = 0;
 
 if (thrusting)
 {
-    var flame_angle = thrust_angle+180;
+    var flame_angle = angle_add(thrust_angle, 180);
     var xx = x + lengthdir_x(half_width, flame_angle);
     var yy = y + lengthdir_y(half_width, flame_angle);
     draw_sprite_ext(flame_image, flame_image_index, xx, yy, 1, 1, flame_angle, c_white, 1);
