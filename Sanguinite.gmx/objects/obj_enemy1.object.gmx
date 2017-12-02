@@ -152,6 +152,7 @@ else
                 vfx_create_moon(x, y, other.speed, 0.3, other.direction, 15, 0.45, 0.05, c_yellow);
             }
         }
+        damage_drone(drone, damage);
     }   
 }
 </string>
