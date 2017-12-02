@@ -35,6 +35,9 @@ flame_image = s_dropship_flame;
 flame_image_index = 0;
 flame_image_speed = 0.50;
 flame_image_number = sprite_get_number(s_flame);
+
+sanguinite_max = instance_number(obj_sanguinite0);
+sanguinite = 0;
 </string>
           </argument>
         </arguments>

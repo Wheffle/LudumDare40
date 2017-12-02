@@ -32,6 +32,9 @@ direction = 270;
 mass = 1;
 
 drone_id = noone;
+
+portrait = portrait_none;
+name = "unknown";
 </string>
           </argument>
         </arguments>

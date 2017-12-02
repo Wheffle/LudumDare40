@@ -27,6 +27,9 @@
             <kind>1</kind>
             <string>event_inherited();
 
+portrait = portrait_sanguinite;
+name = "sanguinite";
+
 mined = false;
 mining_time = room_speed*3;
 
@@ -47,6 +50,49 @@ falling = false;
 
 //Paint surface with a new red tile
 tile_add(tile_sanguinite, 0, 0, CELL, CELL, grid_x*CELL, grid_y*CELL, 9000);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="12">
+      <action>
+        <libid>1</libid>
+        <id>605</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>0</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>Item Get Event</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>with(obj_dropship) sanguinite++;
 </string>
           </argument>
         </arguments>

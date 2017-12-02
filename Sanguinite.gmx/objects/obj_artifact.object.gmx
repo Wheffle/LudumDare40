@@ -27,6 +27,45 @@
             <kind>1</kind>
             <string>event_inherited();
 
+mined = false;
+
+upgrade_type = choose
+(
+    upgradetype.thrust,
+    upgradetype.hp,
+    upgradetype.firepower,
+    upgradetype.firespeed,
+    upgradetype.firetime
+)
+
+switch(upgrade_type)
+{
+    case upgradetype.thrust:
+        portrait = portrait_thruster;
+        name = "engine upgrade";
+        break;
+    
+    case upgradetype.hp:
+        portrait = portrait_armor;
+        name = "armor upgrade";
+        break;
+    
+    case upgradetype.firepower:   
+        portrait = portrait_weapon;
+        name = "bullet upgrade";
+        break;
+        
+    case upgradetype.firespeed:   
+        name = "velocity upgrade";
+        portrait = portrait_weapon;
+        break;
+        
+    case upgradetype.firetime:
+        name = "reloader upgrade";
+        portrait = portrait_weapon;
+        break;
+}
+
 // Immediately settle on a surface
 var grid_x = x div CELL;
 var grid_y = 0;
@@ -38,6 +77,142 @@ do
 until (terrain_get_cell(grid_x, grid_y) or y &gt; room_height)
 
 falling = false;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="12">
+      <action>
+        <libid>1</libid>
+        <id>605</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>0</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>Item Get Event</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>switch(upgrade_type)
+{
+    case upgradetype.thrust:
+        with(obj_player_properties)
+        {
+            thrust_force += 5;
+        }
+        break;
+    
+    case upgradetype.hp:
+        with(obj_player_properties)
+        {
+            hp_max += 10;
+            with(obj_drone) hp += 10;
+        }
+        break;
+    
+    case upgradetype.firepower:   
+        with(obj_player_properties)
+        {
+            firepower += 1;
+        }
+        break;
+        
+    case upgradetype.firespeed:   
+        with(obj_player_properties)
+        {
+            firespeed += 1;
+            if (firespeed &gt; 10) firespeed = 10;
+        }
+        break;
+        
+    case upgradetype.firetime:
+        with(obj_player_properties)
+        {
+            fire_timer_set -= 5;
+            if (fire_timer_set &lt; 5) fire_timer_set = 5;
+        }
+        break;
+}
+
+with(obj_drone) set_drone_properties();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="10">
+      <action>
+        <libid>1</libid>
+        <id>605</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>0</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>Item Pickup Event</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (!mined)
+{
+    mined = true;
+    
+    repeat(3)
+    {
+        var vfx = vfx_create_moon(x, y, 0.75, 0.25, 90, 30, 0.45, 0.05, c_maroon);
+        vfx.image_speed = 0.25;
+    }
+}
 </string>
           </argument>
         </arguments>

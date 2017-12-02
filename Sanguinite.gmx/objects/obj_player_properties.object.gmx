@@ -4,7 +4,7 @@
   <solid>0</solid>
   <visible>-1</visible>
   <depth>0</depth>
-  <persistent>0</persistent>
+  <persistent>-1</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
@@ -25,52 +25,14 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// Set up gui surface
-surface_resize(application_surface, view_wview[0], view_hview[0]);
-display_set_gui_size(view_wview[0], view_hview[0]);
+            <string>thrust_force = 40;
+hp_max = 100;
+firepower = 1;
+firespeed = 4;
+fire_timer_set = 30;
+firearea = 0;
 
-// Init globals
-global.pause = false;
-global.planet_name = "none";
-global.planet_seed = randomize();
-global.planet_type = terraintype.none;
-global.planet_tile = tileset_terrain1;
-global.planet_color = c_white;
-
-// Set up enums
-enum terraingen
-{
-    start,
-    noise,
-    smoothing,
-    perlin,
-    find_rooms,
-    prune_rooms,
-    connect_rooms,
-    tileset,
-    complete
-}
-
-enum terraintype
-{
-    none,
-    worms,
-    antfarm,
-    cheese,
-    machined
-}
-
-enum upgradetype
-{
-    thrust,
-    hp,
-    firepower,
-    firespeed,
-    firetime
-}
-
-instance_create(0, 0, obj_player_properties);
-room_goto(rm_planet_small);
+drones = 5;
 </string>
           </argument>
         </arguments>
