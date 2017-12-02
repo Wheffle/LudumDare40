@@ -45,7 +45,7 @@ with(obj_drone)
         yy += 54;   
         
         draw_set_color(c_white);
-        draw_text(xx, yy, "Cargo: " + cargo.name);
+        draw_text(xx, yy, "Cargo:#" + cargo.name);
         yy += 20;    
     }
     
@@ -56,7 +56,7 @@ with(obj_drone)
 with(obj_player_properties)
 {
     yy = 6;
-    xx = view_wview[0] div 2;
+    xx = 22+bar_width;
     draw_sprite_ext(s_drone, 0, xx, yy+8, 0.5, 0.5, 0, c_white, 1);
     draw_set_color(c_white);
     draw_text(xx+12, yy, "x" + string(drones));
@@ -69,14 +69,31 @@ with(obj_dropship)
 {
     var pct = sanguinite / sanguinite_max;
     draw_bar(xx, yy, xx+bar_width, yy+bar_height, c_maroon, "Sanguinite", c_white, pct);
+    yy += 22;
+    
+    if (sanguinite >= sanguinite_max)
+    {
+        draw_set_color(c_green);
+        draw_text(xx, yy, "Ready for#liftoff");
+    }
 }
-yy += 22;
 
 // Draw planet danger
+yy = 8;
 with(ctrl_planet)
 {
+    xx = (view_wview[0] div 2) - (bar_width div 2);
     draw_bar(xx, yy, xx+bar_width, yy+bar_height, c_fuchsia, "Danger", c_white, danger);
 }
 
+//Draw message
+with(ctrl_planet)
+{
+    if (message_timer > 0)
+    {
+        message_timer--;
+        draw_message(message_width, message_height, message, message_color);
+    }
+}
 
 

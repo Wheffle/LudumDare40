@@ -110,6 +110,7 @@ if (takeoff)
     if (y &lt;= -75)
     {
         // Next planet
+        global.planet_seed = randomize();
         room_restart();
     }
 }

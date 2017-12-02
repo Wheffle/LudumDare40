@@ -85,6 +85,9 @@
       <script>scripts\set_drone_properties.gml</script>
       <script>scripts\danger_add.gml</script>
       <script>scripts\spawn_sanguinite_enemies.gml</script>
+      <script>scripts\spawn_random_enemy.gml</script>
+      <script>scripts\spawn_enemy_wave.gml</script>
+      <script>scripts\show_popup.gml</script>
     </scripts>
     <scripts name="Utility">
       <script>scripts\ceil2.gml</script>
@@ -101,6 +104,7 @@
       <script>scripts\draw_ui.gml</script>
       <script>scripts\draw_bar.gml</script>
       <script>scripts\draw_portrait.gml</script>
+      <script>scripts\draw_message.gml</script>
     </scripts>
   </scripts>
   <fonts name="fonts">
