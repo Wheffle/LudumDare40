@@ -41,10 +41,17 @@ firearea = 0;
 fire_timer_set = 30;
 fire_timer = 0;
 
+bombsize = 1;
+bombcharge = room_speed*10;
+
+bomb_radius = 50;
+bomb_timer = 0;
+
 cargo = noone;
 cargo_timer_set = room_speed;
 cargo_timer = 0;
 
+minig_timer_set = 999;
 mining_timer = 0;
 
 phy_fixed_rotation = true;
@@ -58,6 +65,8 @@ flame_image_index = 0;
 flame_image_speed = 0.50;
 flame_image_number = sprite_get_number(s_flame);
 flame_image_blend = c_red;
+
+rightclick_state = secondary.none;
 
 set_drone_properties();
 </string>
@@ -83,7 +92,11 @@ set_drone_properties();
           <argument>
             <kind>1</kind>
             <string>item_drop();
-with(obj_player_properties) drones--;
+
+if (hp &lt;= 0)
+{
+    with(obj_player_properties) drones--;
+}
 </string>
           </argument>
         </arguments>
@@ -156,10 +169,13 @@ if (mining_timer &gt; 0)
     }
 
     mining_timer--;
+    danger_add(0.15 / mining_timer_set);
     if (mining_timer &lt;= 0)
     {
         with(cargo) mined = true;
         phy_active = true;
+        
+        spawn_sanguinite_enemies(cargo);
     }
 }
 else
@@ -207,6 +223,31 @@ else if (cargo == noone)
 
 // Weapon fire timer
 if (fire_timer &gt; 0) fire_timer--;
+if (bomb_timer &gt; 0) bomb_timer--;
+
+// Right click state
+var liftoff_ready = false;
+with(obj_dropship)
+{
+    if (sanguinite &gt;= sanguinite_max) liftoff_ready = true;
+}
+
+if (cargo != noone)
+{
+    rightclick_state = secondary.drop;
+}
+else if (liftoff_ready and position_meeting(x, y, obj_dropship))
+{
+    rightclick_state = secondary.liftoff;
+}
+else if (bomb_timer &lt;= 0)
+{
+    rightclick_state = secondary.bomb;
+}
+else
+{
+    rightclick_state = secondary.none;
+}
 
 // Outside Room
 if (phy_position_x &lt; 0)
@@ -291,7 +332,41 @@ if (collision_energy &gt;= 0.5)
             <kind>1</kind>
             <string>if (global.pause) exit;
 
-item_drop();
+switch(rightclick_state)
+{
+    case secondary.drop:
+        if (cargo != noone) item_drop();
+        break;
+    
+    case secondary.bomb:
+        if (bomb_timer &lt;= 0)
+        {
+            bomb_timer = bombcharge;
+            var damage_radius = bomb_radius*bombsize;
+            with(parent_enemy)
+            {
+                if (distance_is_less(x, y, other.x, other.y, damage_radius, true))
+                {
+                    hp = 0;
+                    instance_destroy();
+                }
+            }
+            
+            var bomb_color = c_aqua;
+            if (bombsize &gt;= 1.30) bomb_color = c_white;
+            vfx_create_bomb(x, y, bombsize+0.15, bomb_color);
+        }
+        break;
+    
+    case secondary.liftoff:
+        with(obj_dropship)
+        {
+            takeoff = true;
+        }
+        instance_destroy();
+        break;
+}
+
 </string>
           </argument>
         </arguments>
@@ -320,7 +395,8 @@ if (fire_timer &lt;= 0)
 {
     fire_timer = fire_timer_set;
     var dir = point_direction(x, y, mouse_x, mouse_y);
-    fire_bullet(dir, firespeed, firepower, firearea);
+    var bullet = fire_bullet(dir, firespeed, firepower, firearea);
+    bullet.image_xscale = 1+(0.1*(firepower-1));
 }
 </string>
           </argument>

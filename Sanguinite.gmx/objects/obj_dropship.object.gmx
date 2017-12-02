@@ -103,6 +103,16 @@ if (landing)
         deploy_drone();
     }
 }
+
+if (takeoff)
+{
+    y--;
+    if (y &lt;= -75)
+    {
+        // Next planet
+        room_restart();
+    }
+}
 </string>
           </argument>
         </arguments>

@@ -34,8 +34,9 @@ upgrade_type = choose
     upgradetype.thrust,
     upgradetype.hp,
     upgradetype.firepower,
-    upgradetype.firespeed,
-    upgradetype.firetime
+    upgradetype.firetime,
+    upgradetype.bombsize,
+    upgradetype.bombcharge
 )
 
 switch(upgrade_type)
@@ -53,16 +54,21 @@ switch(upgrade_type)
     case upgradetype.firepower:   
         portrait = portrait_weapon;
         name = "bullet upgrade";
-        break;
-        
-    case upgradetype.firespeed:   
-        name = "velocity upgrade";
-        portrait = portrait_weapon;
-        break;
+        break;        
         
     case upgradetype.firetime:
         name = "reloader upgrade";
         portrait = portrait_weapon;
+        break;
+        
+    case upgradetype.bombsize:
+        name = "pulse size upgrade";
+        portrait = portrait_bomb;
+        break;
+        
+    case upgradetype.bombcharge:
+        name = "pulse recharge upgrade";
+        portrait = portrait_bomb;
         break;
 }
 
@@ -140,22 +146,31 @@ falling = false;
         with(obj_player_properties)
         {
             firepower += 1;
-        }
-        break;
-        
-    case upgradetype.firespeed:   
-        with(obj_player_properties)
-        {
             firespeed += 1;
             if (firespeed &gt; 10) firespeed = 10;
         }
-        break;
+        break;        
         
     case upgradetype.firetime:
         with(obj_player_properties)
         {
             fire_timer_set -= 5;
             if (fire_timer_set &lt; 5) fire_timer_set = 5;
+        }
+        break;
+        
+    case upgradetype.bombsize:
+        with(obj_player_properties)
+        {
+            bombsize += 0.15;
+        }
+        break;
+        
+    case upgradetype.bombcharge:
+        with(obj_player_properties)
+        {
+            bombcharge -= room_speed*2;
+            if (bombcharge &lt; room_speed) bombcharge = room_speed;
         }
         break;
 }
@@ -206,6 +221,8 @@ with(obj_drone) set_drone_properties();
             <string>if (!mined)
 {
     mined = true;
+    
+    danger_add(0.10);
     
     repeat(3)
     {

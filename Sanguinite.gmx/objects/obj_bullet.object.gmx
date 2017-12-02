@@ -85,7 +85,13 @@ if (enemy)
         }
         else
         {
-            motion_add(other.direction, 2);
+            switch(other.object_index)
+            {
+                case obj_enemy1:
+                    motion_add(other.direction, 2);
+                    break;
+            }
+            
         }
     }
     
