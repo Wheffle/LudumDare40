@@ -31,12 +31,14 @@ text_width = string_width(text);
 text_height = string_height(text);
 
 outro = "";
+portrait = portrait_none;
 with(obj_player_properties)
 {
     if (drones &gt; 0)
     {
         // win
-        outro = "Data spills onto screens surrounding you as the computer decodes the artifact. " +
+        other.portrait = portrait_secrets;
+        other.outro = "Data spills onto screens surrounding you as the computer decodes the artifact. " +
                 "It tells of an ancient alien race that converted their planet into a massive bio-computer, " +
                 "a being that seems to exist in multiple dimensions. It's been slowly replicating and spreading out into the galaxy, " +
                 "accounting for the small amounts of sanguinite humans have found in various asteroids up to this point. " +
@@ -45,14 +47,16 @@ with(obj_player_properties)
     else if (is_last_level())
     {
         // survive
-        outro = "Your dropship returns without the artifact. Your cargo hold is glutted with sanguinite, " +
+        other.portrait = portrait_sanguinite;
+        other.outro = "Your dropship returns without the artifact. Your cargo hold is glutted with sanguinite, " +
                 "easily enough to travel back to Earth with plenty left over for you to become rich. " +
                 "However, the prospect of early retirement seems a hollow victory... what secrets have you left behind forever?";
     }
     else
     {
         // lose
-        outro = "Your dropship returns droneless. You aren't sure if you've mined enough sanguinite to escape " +
+        other.portrait = portrait_deaddrone;
+        other.outro = "Your dropship returns droneless. You aren't sure if you've mined enough sanguinite to escape " +
                 "the system and make it back to civilization. Your choices are grim: wait here and most likely die " +
                 "to the hornet's nest of hostile creatures you have stirred up, or die in the emptiness of space " +
                 "when you run out of fuel half-way through a futile voyage trying to get home.";
@@ -63,6 +67,9 @@ draw_set_font(font_small);
 outro_x = 20;
 outro_y = 100;
 outro_w = string_width_ext(outro, -1, view_wview[0]-40);
+
+portrait_x = (view_wview[0] div 2) - 25;
+portrait_y = view_hview[0] - 64;
 </string>
           </argument>
         </arguments>
@@ -117,6 +124,8 @@ outro_w = string_width_ext(outro, -1, view_wview[0]-40);
 draw_set_font(font_small);
 draw_set_color(c_white);
 draw_text_ext(outro_x, outro_y, outro, -1, outro_w);
+
+draw_portrait(portrait_x, portrait_y, portrait);
 </string>
           </argument>
         </arguments>

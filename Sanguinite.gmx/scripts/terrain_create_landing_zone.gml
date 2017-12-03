@@ -8,7 +8,7 @@ with(obj_terrain)
     var consecutive_blocks = 0;
     for (var j = 0; j < height; j++)
     {
-        for (var i = 3; i < height-3; i++)
+        for (var i = 3; i < width-3; i++)
         {
             if (terrain_get_cell(i, j))
             {

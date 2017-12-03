@@ -70,7 +70,7 @@ with(obj_dropship)
     var pct = sanguinite / sanguinite_max;
     if (is_last_level())
     {
-        draw_bar(xx, yy, xx+bar_width, yy+bar_height, c_yellow, "Artifact", c_white, pct);
+        draw_bar(xx, yy, xx+bar_width, yy+bar_height, c_olive, "Artifact", c_white, pct);
     }
     else
     {
