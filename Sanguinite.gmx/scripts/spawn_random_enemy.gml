@@ -20,7 +20,7 @@ with(obj_terrain)
             
         case rm_planet_med:
             var dice = random(1);
-            if (dice >= 95)
+            if (dice >= 0.95)
             {
                 enemy_type = obj_enemy4;
             }
@@ -32,7 +32,7 @@ with(obj_terrain)
             
         case rm_planet_large:
             var dice = random(1);
-            if (dice >= 80)
+            if (dice >= 0.80)
             {
                 enemy_type = obj_enemy4;
             }
