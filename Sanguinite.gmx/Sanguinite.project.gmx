@@ -30,6 +30,7 @@
       <sprite>sprites\portrait_armor</sprite>
       <sprite>sprites\portrait_thruster</sprite>
       <sprite>sprites\portrait_sanguinite</sprite>
+      <sprite>sprites\portrait_sanguinite2</sprite>
       <sprite>sprites\portrait_bomb</sprite>
       <sprite>sprites\portrait_secrets</sprite>
     </sprites>
@@ -189,11 +190,12 @@
     <room>rooms\rm_planet_med</room>
     <room>rooms\rm_planet_large</room>
   </rooms>
-  <constants number="4">
+  <constants number="5">
     <constant name="EV_ITEM_GET">2</constant>
     <constant name="EV_ITEM_DROP">1</constant>
     <constant name="EV_ITEM_PICKUP">0</constant>
     <constant name="CELL">25</constant>
+    <constant name="VERSION">"1.00"</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>
