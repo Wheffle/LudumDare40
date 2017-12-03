@@ -102,6 +102,7 @@ if (landing or takeoff)
 
 if (landing)
 {
+    play_repeat_sound(sfx_heavythruster);
     y++;
     
     var grid_x = x div CELL;
@@ -116,6 +117,7 @@ if (landing)
 
 if (takeoff)
 {
+    play_repeat_sound(sfx_heavythruster);
     y--;
     if (y &lt;= -75)
     {

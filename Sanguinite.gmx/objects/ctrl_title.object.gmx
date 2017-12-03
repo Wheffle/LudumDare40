@@ -60,6 +60,7 @@ background_vspeed[0] = 0.025;
             <string>if (keyboard_check(vk_anykey) or mouse_check_button_pressed(mb_any))
 {
     instance_create(0, 0, obj_player_properties);
+    audio_play_sound(sfx_choose, SFX_PRIORITY, false);
     room_goto(rm_intro);
 }
 </string>

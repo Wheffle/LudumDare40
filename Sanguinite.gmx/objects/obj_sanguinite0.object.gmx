@@ -102,6 +102,7 @@ tile_add(tile_sanguinite, 0, 0, CELL, CELL, grid_x*CELL, grid_y*CELL, 9000);
     }
     else
     {
+        audio_play_sound(sfx_alarm, SFX_PRIORITY, false);
         show_popup("Sanguinite quota obtained: ready for liftoff", c_lime, 5);
     }
 }

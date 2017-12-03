@@ -68,6 +68,8 @@ background_vspeed[0] = 0.025;
             <kind>1</kind>
             <string>if (keyboard_check_pressed(vk_anykey) or mouse_check_button_pressed(mb_any))
 {
+    audio_play_sound(sfx_choose, SFX_PRIORITY, false);
+    
     // Start planet
     with(obj_player_properties)
     {

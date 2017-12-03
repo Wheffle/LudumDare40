@@ -4,6 +4,7 @@
 */
 if (cargo != noone)
 {
+    audio_play_sound(sfx_drop, SFX_PRIORITY, false);
     with(cargo) event_user(EV_ITEM_DROP);
     cargo.drone_id = noone;
     cargo = noone;

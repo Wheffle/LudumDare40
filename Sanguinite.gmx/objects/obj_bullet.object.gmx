@@ -81,10 +81,12 @@ if (enemy)
         hp -= other.damage;
         if (hp &lt;= 0)
         {
+            audio_play_sound(sfx_enemydeath, SFX_PRIORITY, false);
             instance_destroy();
         }
         else
         {
+            audio_play_sound(sfx_enemyhit, SFX_PRIORITY, false);
             switch(other.object_index)
             {
                 case obj_enemy1:

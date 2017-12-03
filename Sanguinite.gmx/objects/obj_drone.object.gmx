@@ -162,6 +162,8 @@ if (cargo != noone)
 thrusting = false;
 if (mining_timer &gt; 0)
 {
+    play_mining_sound();
+    
     if (cargo and mining_timer % 15 == 0)
     {
         var vfx = vfx_create_moon(cargo.x, cargo.y, 0.75, 0.25, 90, 30, 0.45, 0.05, c_maroon);
@@ -177,6 +179,7 @@ if (mining_timer &gt; 0)
     danger_add(0.15 / mining_timer_set);
     if (mining_timer &lt;= 0)
     {
+        audio_play_sound(sfx_harvest, SFX_PRIORITY, false);
         with(cargo) mined = true;
         phy_active = true;
         
@@ -219,6 +222,7 @@ else
         
         // Flame image
         thrusting = true;
+        play_repeat_sound(sfx_thruster);
         flame_image_index = (flame_image_index + flame_image_speed) % flame_image_number;
     }
 }
@@ -357,6 +361,7 @@ switch(rightclick_state)
     case secondary.bomb:
         if (bomb_timer &lt;= 0)
         {
+            audio_play_sound(sfx_bomb, SFX_PRIORITY, false);
             bomb_timer = bombcharge;
             var damage_radius = bomb_radius*bombsize;
             with(parent_enemy)
@@ -383,6 +388,7 @@ switch(rightclick_state)
         break;
     
     case secondary.liftoff:
+        audio_play_sound(sfx_choose, SFX_PRIORITY, false);
         with(obj_dropship)
         {
             takeoff = true;
@@ -422,6 +428,8 @@ if (fire_timer &lt;= 0)
     var dir = point_direction(x, y, mouse_x, mouse_y);
     var bullet = fire_bullet(dir, firespeed, firepower, firearea);
     bullet.image_xscale = 1+(0.1*(firepower-1));
+    
+    audio_play_sound(sfx_lasershot, SFX_PRIORITY, false);
 }
 </string>
           </argument>

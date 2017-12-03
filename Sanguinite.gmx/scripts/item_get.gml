@@ -4,6 +4,7 @@
 */
 if (cargo != noone)
 {
+    audio_play_sound(sfx_itemget, SFX_PRIORITY, false);
     image_index = 0;
     with(cargo)
     { 

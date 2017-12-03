@@ -3,11 +3,11 @@
 switch(room)
 {
     case rm_planet_small:
-        repeat(7) spawn_random_enemy();
+        repeat(5) spawn_random_enemy();
         break;
         
     case rm_planet_med:
-        repeat(12) spawn_random_enemy();
+        repeat(10) spawn_random_enemy();
         break;
         
     case rm_planet_large:
@@ -15,4 +15,5 @@ switch(room)
         break;
 }
 
+audio_play_sound(sfx_alarm, SFX_PRIORITY, false);
 show_popup("Hostile surge detected.", c_red, 5);

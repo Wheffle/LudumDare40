@@ -94,6 +94,8 @@ portrait_y = view_hview[0] - 64;
             <kind>1</kind>
             <string>if (keyboard_check_pressed(vk_anykey) or mouse_check_button_pressed(mb_any))
 {
+    audio_play_sound(sfx_choose, SFX_PRIORITY, false);
+    
     with(obj_player_properties) instance_destroy();
     room_goto(rm_title);
 }
