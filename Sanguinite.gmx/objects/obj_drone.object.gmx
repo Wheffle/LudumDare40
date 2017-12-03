@@ -51,7 +51,7 @@ cargo = noone;
 cargo_timer_set = room_speed;
 cargo_timer = 0;
 
-minig_timer_set = 999;
+mining_timer_set = 999;
 mining_timer = 0;
 
 phy_fixed_rotation = true;

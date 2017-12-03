@@ -11,22 +11,26 @@ with(obj_terrain)
     }
     
     var mines = 0;
+    var min_artifacts = 0;
     var wall_enemies = 0;
     switch(room)
     {
         case rm_planet_small:
             mines = 2;
             wall_enemies = 2;
+            min_artifacts = 2;
             break;
         
         case rm_planet_med:
             mines = 3;
             wall_enemies = 4;
+            min_artifacts = 4;
             break;
             
         case rm_planet_large:
             mines = 4;
             wall_enemies = 8;
+            min_artifacts = 6;
             break;
     }
     
@@ -44,11 +48,20 @@ with(obj_terrain)
             var yy = grid_y*CELL + cell_half;
             
             var item_type = obj_artifact;
-            if (mines > 0)
+            if (mines > 3)
             {
-                mines--;
+                item_type = obj_sanguinite2;
+            }
+            else if (mines > 2)
+            {
+                item_type = obj_sanguinite1;
+            }
+            else if (mines > 0)
+            {
                 item_type = obj_sanguinite0;
             }
+            
+            mines--;
             
             instance_create(xx, yy, item_type);
         }
@@ -65,10 +78,11 @@ with(obj_terrain)
             var xx = rand_x*CELL + cell_half;
             var yy = rand_y*CELL + cell_half;
             instance_create(xx, yy, obj_sanguinite0);
+            mines--;
         }
     }
     
-    while (instance_number(obj_artifact) == 0)
+    while (instance_number(obj_artifact) < min_artifacts)
     {
         var rand_x = irandom(width-1);
         var rand_y = irandom(height-1);
