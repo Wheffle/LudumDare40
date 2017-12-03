@@ -92,7 +92,19 @@ tile_add(tile_sanguinite, 0, 0, CELL, CELL, grid_x*CELL, grid_y*CELL, 9000);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>with(obj_dropship) sanguinite++;
+            <string>with(obj_dropship)
+{ 
+    sanguinite++;
+    
+    if (sanguinite &lt; sanguinite_max)
+    {
+        show_popup("Sanguinite acquired", c_white, 5);
+    }
+    else
+    {
+        show_popup("Sanguinite quota obtained: ready for liftoff", c_lime, 5);
+    }
+}
 </string>
           </argument>
         </arguments>

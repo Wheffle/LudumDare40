@@ -18,7 +18,7 @@ with(obj_player_properties)
     {
         other.flame_image_blend = c_red;
     }
-    else if (thrust < 80)
+    else if (thrust_force < 80)
     {
         other.flame_image_blend = c_yellow;
     }

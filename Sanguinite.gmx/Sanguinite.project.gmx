@@ -32,9 +32,18 @@
     </sprites>
   </sprites>
   <backgrounds name="background">
-    <background>background\tile_terrain1</background>
-    <background>background\tileset_terrain1</background>
-    <background>background\tile_sanguinite</background>
+    <backgrounds name="Tiles">
+      <background>background\tile_terrain1</background>
+      <background>background\tileset_terrain1</background>
+      <background>background\tileset_terrain2</background>
+      <background>background\tileset_terrain3</background>
+      <background>background\tile_sanguinite</background>
+    </backgrounds>
+    <backgrounds name="Background">
+      <background>background\bg_title</background>
+      <background>background\bg_smog</background>
+      <background>background\bg_clouds</background>
+    </backgrounds>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -90,6 +99,7 @@
       <script>scripts\spawn_random_enemy.gml</script>
       <script>scripts\spawn_enemy_wave.gml</script>
       <script>scripts\show_popup.gml</script>
+      <script>scripts\get_drones_left.gml</script>
     </scripts>
     <scripts name="Utility">
       <script>scripts\ceil2.gml</script>
@@ -115,6 +125,10 @@
   <objects name="objects">
     <object>objects\ctrl_init</object>
     <object>objects\ctrl_planet</object>
+    <object>objects\ctrl_title</object>
+    <object>objects\ctrl_solarsystem</object>
+    <object>objects\ctrl_win</object>
+    <object>objects\ctrl_lose</object>
     <objects name="Terrain">
       <object>objects\obj_terrain</object>
       <object>objects\obj_pocket</object>
@@ -150,6 +164,10 @@
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_init</room>
+    <room>rooms\rm_title</room>
+    <room>rooms\rm_solarsystem</room>
+    <room>rooms\rm_win</room>
+    <room>rooms\rm_lose</room>
     <room>rooms\rm_planet_small</room>
     <room>rooms\rm_planet_med</room>
     <room>rooms\rm_planet_large</room>

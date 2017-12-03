@@ -132,6 +132,7 @@ falling = false;
         {
             thrust_force += 10;
             if(thrust_force &gt; 80) thrust_force = 80;
+            show_popup("Engine upgraded", c_lime, 5);
         }
         break;
     
@@ -140,6 +141,7 @@ falling = false;
         {
             hp_max += 10;
             with(obj_drone) hp += 10;
+            show_popup("Armor upgraded", c_lime, 5);
         }
         break;
     
@@ -149,6 +151,7 @@ falling = false;
             firepower += 1;
             firespeed += 1;
             if (firespeed &gt; 10) firespeed = 10;
+            show_popup("Firepower upgraded", c_lime, 5);
         }
         break;        
         
@@ -157,6 +160,7 @@ falling = false;
         {
             fire_timer_set -= 6;
             if (fire_timer_set &lt; 5) fire_timer_set = 5;
+            show_popup("Fire speed upgraded", c_lime, 5);
         }
         break;
         
@@ -164,6 +168,7 @@ falling = false;
         with(obj_player_properties)
         {
             bombsize += 0.25;
+            show_popup("Pulse radius upgraded", c_lime, 5);
         }
         break;
         
@@ -172,6 +177,7 @@ falling = false;
         {
             bombcharge -= room_speed*2;
             if (bombcharge &lt; room_speed) bombcharge = room_speed;
+            show_popup("Pulse recharge upgraded", c_lime, 5);
         }
         break;
 }

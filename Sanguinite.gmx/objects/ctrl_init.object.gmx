@@ -81,7 +81,7 @@ enum secondary
 }
 
 instance_create(0, 0, obj_player_properties);
-room_goto(rm_planet_large);
+room_goto(rm_title);
 </string>
           </argument>
         </arguments>
