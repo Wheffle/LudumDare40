@@ -8,7 +8,7 @@ map[? "type"] = choose(
     terraintype.antfarm,
     terraintype.cheese,
     terraintype.machined);
-map[? "color"] = choose(c_white, c_blue, c_green, c_purple, c_olive, c_orange);
+map[? "color"] = choose(c_white, c_teal, c_green, c_purple, c_olive, c_orange);
 map[? "room"] = argument1;    
 
 var tileset = choose(tileset_terrain1, tileset_terrain2, tileset_terrain3);

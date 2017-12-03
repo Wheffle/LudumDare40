@@ -36,7 +36,7 @@ top_speed = 0.5;
 bullet_timer_set = room_speed;
 bullet_timer = bullet_timer_set;
 
-range = 240;
+range = 500;
 </string>
           </argument>
         </arguments>

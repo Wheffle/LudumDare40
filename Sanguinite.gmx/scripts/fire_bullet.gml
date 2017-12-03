@@ -9,11 +9,11 @@ with(bullet)
     image_angle = direction;
     area = argument3;
     
-    if (damage < 3)
+    if (damage < 2)
     {
         image_blend = c_yellow;
     }
-    else if (damage < 5)
+    else if (damage < 3)
     {
         image_blend = c_aqua;
     }

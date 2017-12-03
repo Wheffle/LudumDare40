@@ -22,6 +22,7 @@
     <sprite>sprites\s_part_moon</sprite>
     <sprite>sprites\s_sanguinite</sprite>
     <sprite>sprites\s_part_bomb</sprite>
+    <sprite>sprites\s_starship</sprite>
     <sprites name="Potraits">
       <sprite>sprites\portrait_none</sprite>
       <sprite>sprites\portrait_deaddrone</sprite>
@@ -30,6 +31,7 @@
       <sprite>sprites\portrait_thruster</sprite>
       <sprite>sprites\portrait_sanguinite</sprite>
       <sprite>sprites\portrait_bomb</sprite>
+      <sprite>sprites\portrait_secrets</sprite>
     </sprites>
     <sprites name="Planets">
       <sprite>sprites\s_planet1</sprite>
@@ -39,16 +41,17 @@
   </sprites>
   <backgrounds name="background">
     <backgrounds name="Tiles">
-      <background>background\tile_terrain1</background>
       <background>background\tileset_terrain1</background>
       <background>background\tileset_terrain2</background>
       <background>background\tileset_terrain3</background>
       <background>background\tile_sanguinite</background>
+      <background>background\tile_redhold</background>
     </backgrounds>
     <backgrounds name="Background">
       <background>background\bg_title</background>
       <background>background\bg_smog</background>
       <background>background\bg_clouds</background>
+      <background>background\bg_help</background>
     </backgrounds>
   </backgrounds>
   <paths name="paths"/>
@@ -140,8 +143,7 @@
     <object>objects\ctrl_title</object>
     <object>objects\ctrl_intro</object>
     <object>objects\ctrl_solarsystem</object>
-    <object>objects\ctrl_win</object>
-    <object>objects\ctrl_lose</object>
+    <object>objects\ctrl_outro</object>
     <objects name="Terrain">
       <object>objects\obj_terrain</object>
       <object>objects\obj_pocket</object>
@@ -172,6 +174,7 @@
       <object>objects\obj_enemybullet</object>
     </objects>
     <objects name="Lazy Particles">
+      <object>objects\parent_vfx</object>
       <object>objects\vfx_moon</object>
       <object>objects\vfx_bomb</object>
     </objects>

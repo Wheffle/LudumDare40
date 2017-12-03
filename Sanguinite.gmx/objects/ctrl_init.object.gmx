@@ -32,7 +32,7 @@ surface_resize(application_surface, view_wview[0], view_hview[0]);
 display_set_gui_size(view_wview[0], view_hview[0]);
 
 // Init globals
-global.pause = false;
+global.pause = true;
 global.planet_name = "none";
 global.planet_seed = randomize();
 global.planet_type = terraintype.none;

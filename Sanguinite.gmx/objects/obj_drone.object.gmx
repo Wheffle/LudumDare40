@@ -44,7 +44,7 @@ fire_timer = 0;
 bombsize = 1;
 bombcharge = room_speed*10;
 
-bomb_radius = 50;
+bomb_radius = 75;
 bomb_timer = 0;
 
 cargo = noone;
@@ -168,7 +168,7 @@ if (mining_timer &gt; 0)
         vfx.image_speed = 0.25;
     }
     
-    if (mining_timer % 30 == 0)
+    if (mining_timer % 60 == 0)
     {
         spawn_random_enemy();
     }
@@ -182,7 +182,13 @@ if (mining_timer &gt; 0)
         
         spawn_sanguinite_enemies(cargo);
         
-        if (instance_number(obj_sanguinite0) &lt;= 1)
+        var is_last = true;
+        with(obj_sanguinite0)
+        {
+            if (!mined) is_last = false;
+        }
+        
+        if (is_last)
         {
             spawn_enemy_wave();
         }
@@ -362,9 +368,17 @@ switch(rightclick_state)
                 }
             }
             
+            with(obj_enemybullet)
+            {
+                if (distance_is_less(x, y, other.x, other.y, damage_radius, true))
+                {
+                    instance_destroy();
+                }
+            }
+            
             var bomb_color = c_aqua;
-            if (bombsize &gt;= 1.30) bomb_color = c_white;
-            vfx_create_bomb(x, y, bombsize+0.15, bomb_color);
+            if (bombsize &gt; 1.50) bomb_color = c_white;
+            vfx_create_bomb(x, y, bombsize, bomb_color);
         }
         break;
     
@@ -373,6 +387,7 @@ switch(rightclick_state)
         {
             takeoff = true;
         }
+        view_object[0] = obj_dropship;
         instance_destroy();
         break;
 }

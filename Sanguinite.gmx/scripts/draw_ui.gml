@@ -68,7 +68,14 @@ xx = view_wview[0]-bar_width-8;
 with(obj_dropship)
 {
     var pct = sanguinite / sanguinite_max;
-    draw_bar(xx, yy, xx+bar_width, yy+bar_height, c_maroon, "Sanguinite", c_white, pct);
+    if (is_last_level())
+    {
+        draw_bar(xx, yy, xx+bar_width, yy+bar_height, c_yellow, "Artifact", c_white, pct);
+    }
+    else
+    {
+        draw_bar(xx, yy, xx+bar_width, yy+bar_height, c_maroon, "Sanguinite", c_white, pct);
+    }
     yy += 22;
     
     if (sanguinite >= sanguinite_max)

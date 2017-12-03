@@ -55,7 +55,7 @@ switch(terrain_type)
 }
 
 danger = 0;
-spawn_timer_set = room_speed*15;
+spawn_timer_set = room_speed*20;
 spawn_timer = spawn_timer_set;
 
 max_enemies = 0;
@@ -64,17 +64,17 @@ switch(room)
 {
     case rm_planet_small:
         max_enemies = 3;
-        max_enemies_bonus = 10;
+        max_enemies_bonus = 3;
         break;
         
     case rm_planet_med:
         max_enemies = 5;
-        max_enemies_bonus = 15;
+        max_enemies_bonus = 6;
         break;
         
     case rm_planet_large:
         max_enemies = 10;
-        max_enemies_bonus = 20;
+        max_enemies_bonus = 9;
         break;
 }
 
@@ -85,7 +85,14 @@ message_timer = 0;
 message_width = 0;
 message_height = 0;
 
-show_popup("Objective: retrieve all sanguinite.", c_white, 10);
+if (is_last_level())
+{
+    show_popup("Objective: retrieve the artifact.", c_yellow, 10);
+}
+else
+{
+    show_popup("Objective: retrieve all sanguinite.", c_white, 10);
+}
 
 </string>
           </argument>
@@ -164,10 +171,6 @@ if (total_enemies &lt; effective_max_enemies)
         spawn_random_enemy();
     }   
 }
-
-// Raise danger level
-
-danger_add(get_planet_level()/3600);
 </string>
           </argument>
         </arguments>
@@ -219,6 +222,27 @@ draw_background_tiled(bg_clouds, view_xview[0] - xscroll, view_yview[0] - yscrol
             <kind>1</kind>
             <string>draw_ui();
 
+if (global.pause)
+{
+    draw_set_alpha(0.80);
+    draw_set_color(c_black);
+    draw_rectangle(0, 0, view_wview[0], view_hview[0], false);
+    draw_set_alpha(1);
+    
+    var xhalf = view_wview[0] div 2;
+    var yhalf = view_hview[0] div 2;
+    
+    var help_x = xhalf - 150;
+    var help_y = yhalf - 100;
+    draw_background(bg_help, help_x, help_y);
+    
+    draw_set_color(c_white);
+    draw_set_font(font_small);
+    draw_set_halign(fa_center);
+    draw_text(xhalf, yhalf+100, "PAUSED#Press ESC to pause/unpause");
+    draw_set_halign(fa_left);
+}
+    
 with(terrain_id)
 {
     if (gen_active)
@@ -243,10 +267,6 @@ with(terrain_id)
         draw_roundrect(x1, y1, x1+lerp(0, width, gen_progress), y2, false);
     }
 }
-
-
-    
-
 </string>
           </argument>
         </arguments>

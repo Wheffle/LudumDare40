@@ -47,6 +47,7 @@ planets[2] = new_planet(name_list[| 3], rm_planet_med);
 planets[1] = new_planet(name_list[| 4], rm_planet_small);
 planets[0] = new_planet(name_list[| 5], rm_planet_small);
 
+ds_list_destroy(name_list);
 
 </string>
           </argument>
@@ -70,9 +71,7 @@ planets[0] = new_planet(name_list[| 5], rm_planet_small);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ds_list_destroy(name_list);
-
-for(var i = 0; i &lt; array_length_1d(planets); i++)
+            <string>for(var i = 0; i &lt; array_length_1d(planets); i++)
 {
     ds_map_destroy(planets[i]);
 }
