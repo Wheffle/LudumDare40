@@ -10,7 +10,26 @@ with(obj_terrain)
         ds_list_add(list, id);
     }
     
-    var mines = global.planet_mines;
+    var mines = 0;
+    var wall_enemies = 0;
+    switch(room)
+    {
+        case rm_planet_small:
+            mines = 2;
+            wall_enemies = 2;
+            break;
+        
+        case rm_planet_med:
+            mines = 3;
+            wall_enemies = 4;
+            break;
+            
+        case rm_planet_large:
+            mines = 4;
+            wall_enemies = 8;
+            break;
+    }
+    
     ds_list_shuffle(list);
     for (var i = 0; i < ds_list_size(list); i++)
     {
@@ -67,11 +86,38 @@ with(obj_terrain)
     var dropship = instance_create(dropship_spawn_x, dropship_spawn_y, obj_dropship);
     view_object[0] = obj_dropship;
     
-    // Spawn random-ass enemies
-    /*repeat(10)
+    // Spawn wall enemies
+    with(obj_terrain)
     {
-        var ran_x = 25 + random(room_width-50);
-        var ran_y = 25 + random(room_height-50);
-        instance_create(ran_x, ran_y, obj_enemy1);
-    }*/
+        // Find all walls
+        var list = ds_list_create();
+        for (var i = 1; i < width-1; i++)
+        {
+            for (var j = 1; j < height-1; j++)
+            {
+               if (ds_grid_get(grid, i, j) and
+                  !(ds_grid_get(grid, i-1, j) and ds_grid_get(grid, i+1, j)))
+               {
+                    var xys = coor_to_string(i, j);
+                    ds_list_add(list, xys);
+               }
+            }
+        }
+        
+        // Pick a few to make wall enemies
+        ds_list_shuffle(list);
+        for (var i = 0; i < wall_enemies and i < ds_list_size(list); i++)
+        {
+            var xys = list[| i];
+            var grid_x = string_to_coor_x(xys);
+            var grid_y = string_to_coor_y(xys);
+            
+            var xx = grid_x*CELL + cell_half;
+            var yy = grid_y*CELL + cell_half;
+            instance_create(xx, yy, obj_enemy3);
+        }
+        
+        ds_list_destroy(list);
+    }
+    
 }

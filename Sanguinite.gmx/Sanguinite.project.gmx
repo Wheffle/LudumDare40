@@ -15,6 +15,8 @@
     <sprite>sprites\s_artifact</sprite>
     <sprite>sprites\s_enemy1</sprite>
     <sprite>sprites\s_enemy2</sprite>
+    <sprite>sprites\s_enemy3</sprite>
+    <sprite>sprites\s_enemy4</sprite>
     <sprite>sprites\s_bullet</sprite>
     <sprite>sprites\s_part_moon</sprite>
     <sprite>sprites\s_sanguinite</sprite>
@@ -137,6 +139,9 @@
       <object>objects\parent_enemy</object>
       <object>objects\obj_enemy1</object>
       <object>objects\obj_enemy2</object>
+      <object>objects\obj_enemy3</object>
+      <object>objects\obj_enemy4</object>
+      <object>objects\obj_enemybullet</object>
     </objects>
     <objects name="Lazy Particles">
       <object>objects\vfx_moon</object>
@@ -146,6 +151,8 @@
   <rooms name="rooms">
     <room>rooms\rm_init</room>
     <room>rooms\rm_planet_small</room>
+    <room>rooms\rm_planet_med</room>
+    <room>rooms\rm_planet_large</room>
   </rooms>
   <constants number="4">
     <constant name="EV_ITEM_GET">2</constant>

@@ -36,7 +36,7 @@ global.planet_seed = randomize();
 global.planet_type = terraintype.none;
 global.planet_tile = tileset_terrain1;
 global.planet_color = c_white;
-global.planet_mines = 2;
+global.planet_room = rm_planet_small;
 
 // Set up enums
 enum terraingen
