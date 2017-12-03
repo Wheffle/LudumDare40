@@ -143,6 +143,7 @@ if (instance_exists(target))
         bullet_timer = bullet_timer_set;
         if (distance_is_less(x, y, target.x, target.y, range, true))
         {
+            audio_play_sound(sfx_enemyshot, SFX_PRIORITY, false);
             var bullet = instance_create(x, y, obj_enemybullet);
             bullet.direction = point_direction(x, y, target.x, target.y);
             bullet.image_angle = bullet.direction;

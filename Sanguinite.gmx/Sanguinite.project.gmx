@@ -4,7 +4,27 @@
     <Config>Configs\Default</Config>
   </Configs>
   <NewExtensions/>
-  <sounds name="sound"/>
+  <sounds name="sound">
+    <sounds name="SFX">
+      <sound>sound\sfx_alarm</sound>
+      <sound>sound\sfx_enemydeath</sound>
+      <sound>sound\sfx_enemyhit</sound>
+      <sound>sound\sfx_lasershot</sound>
+      <sound>sound\sfx_playerdeath</sound>
+      <sound>sound\sfx_drop</sound>
+      <sound>sound\sfx_playerhit</sound>
+      <sound>sound\sfx_dronelaunch</sound>
+      <sound>sound\sfx_pickup</sound>
+      <sound>sound\sfx_bomb</sound>
+      <sound>sound\sfx_thruster</sound>
+      <sound>sound\sfx_itemget</sound>
+      <sound>sound\sfx_enemyshot</sound>
+      <sound>sound\sfx_mining</sound>
+      <sound>sound\sfx_harvest</sound>
+      <sound>sound\sfx_choose</sound>
+      <sound>sound\sfx_heavythruster</sound>
+    </sounds>
+  </sounds>
   <sprites name="sprites">
     <sprite>sprites\s_square</sprite>
     <sprite>sprites\s_drone</sprite>
@@ -119,6 +139,8 @@
       <script>scripts\direction_intercept.gml</script>
       <script>scripts\angle_add.gml</script>
       <script>scripts\distance_is_less.gml</script>
+      <script>scripts\play_repeat_sound.gml</script>
+      <script>scripts\play_mining_sound.gml</script>
     </scripts>
     <scripts name="Lazy Particles">
       <script>scripts\vfx_create_moon.gml</script>
@@ -190,7 +212,9 @@
     <room>rooms\rm_planet_med</room>
     <room>rooms\rm_planet_large</room>
   </rooms>
-  <constants number="5">
+  <constants number="7">
+    <constant name="MUSIC_PRIORITY">20</constant>
+    <constant name="SFX_PRIORITY">10</constant>
     <constant name="EV_ITEM_GET">2</constant>
     <constant name="EV_ITEM_DROP">1</constant>
     <constant name="EV_ITEM_PICKUP">0</constant>

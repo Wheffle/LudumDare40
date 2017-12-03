@@ -71,10 +71,12 @@ intro[0] = "[1/10]#Humanity has discovered a rare and powerful mineral called sa
             <kind>1</kind>
             <string>if (keyboard_check_pressed(vk_escape))
 {
+    audio_play_sound(sfx_choose, SFX_PRIORITY, false);
     room_goto(rm_solarsystem);
 }
 else if (keyboard_check_pressed(vk_anykey) or mouse_check_button_pressed(mb_any))
 {
+    audio_play_sound(sfx_choose, SFX_PRIORITY, false);
     intro_index++;
     if (intro_index &gt;= array_length_1d(intro))
     {

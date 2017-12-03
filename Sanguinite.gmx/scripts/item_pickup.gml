@@ -4,6 +4,7 @@
 */
 if (cargo == noone)
 {
+    audio_play_sound(sfx_pickup, SFX_PRIORITY, false);
     cargo = argument0;
     cargo.drone_id = id;
     with(cargo) event_user(EV_ITEM_PICKUP);

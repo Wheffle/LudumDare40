@@ -289,7 +289,8 @@ with(terrain_id)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.pause = !global.pause;
+            <string>audio_play_sound(sfx_choose, SFX_PRIORITY, false);
+global.pause = !global.pause;
 physics_pause_enable(global.pause);
 </string>
           </argument>
