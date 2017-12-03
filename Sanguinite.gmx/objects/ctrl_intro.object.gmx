@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_font(font_small);
+            <string>
+draw_set_font(font_small);
 text = "press any key to continue#or ESC to skip";
 text_width = string_width(text);
 text_height = string_height(text);
@@ -47,6 +48,14 @@ intro[2] = "[3/10]#Entrepreneurial captains brave the new frontier searching for
 intro[1] = "[2/10]#This new mineral enables faster-than-light space travel."
 intro[0] = "[1/10]#Humanity has discovered a rare and powerful mineral called sanguinite."
 
+
+pic = s_starship;
+pic_x = view_wview[0] div 2;
+pic_y = view_hview[0] - 125;
+
+planet_x = 90;
+planet_y = view_hview[0] - 54;
+planet_space = 58;
 </string>
           </argument>
         </arguments>
@@ -108,6 +117,16 @@ else if (keyboard_check_pressed(vk_anykey) or mouse_check_button_pressed(mb_any)
             <string>draw_message(text_width, text_height, text, c_white);
 
 draw_text_ext(intro_x, intro_y, intro[intro_index], -1, intro_w);
+
+draw_sprite(pic, 0, pic_x, pic_y);
+
+var xx = planet_x;
+var yy = planet_y;
+for (var i = 0; i &lt; 6; i++)
+{
+    draw_planet(i, xx, yy);
+    xx += planet_space;
+}
 </string>
           </argument>
         </arguments>

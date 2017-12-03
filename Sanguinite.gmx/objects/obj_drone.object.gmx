@@ -487,6 +487,6 @@ if (thrusting)
   <PhysicsObjectKinematic>0</PhysicsObjectKinematic>
   <PhysicsShapePoints>
     <point>7.5,7.5</point>
-    <point>6,12</point>
+    <point>5,12</point>
   </PhysicsShapePoints>
 </object>

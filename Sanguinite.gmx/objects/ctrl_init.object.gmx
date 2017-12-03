@@ -43,6 +43,10 @@ global.planet_tile = tileset_terrain1;
 global.planet_color = c_white;
 global.planet_room = rm_planet_small;
 
+// Init music system
+music_init(MUSIC_PRIORITY, 1000);
+music_set_gain(0.50);
+
 // Set up enums
 enum terraingen
 {
