@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>100</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -163,6 +163,33 @@ if (total_enemies &lt; max_enemies + floor(danger*max_enemies_bonus))
         spawn_random_enemy();
     }   
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="72">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//draw background
+var xscroll = (view_xview[0]/view_wview[0]) * 0.25 * background_get_width(bg_clouds);
+var yscroll = (view_yview[0]/view_hview[0]) * 0.25 * background_get_height(bg_clouds);
+
+draw_background_tiled(bg_clouds, view_xview[0] - xscroll, view_yview[0] - yscroll);
 </string>
           </argument>
         </arguments>
