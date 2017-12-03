@@ -59,7 +59,8 @@ background_vspeed[0] = 0.025;
             <kind>1</kind>
             <string>if (keyboard_check(vk_anykey) or mouse_check_button_pressed(mb_any))
 {
-    room_goto(rm_planet_small);
+    instance_create(0, 0, obj_player_properties);
+    room_goto(rm_intro);
 }
 </string>
           </argument>

@@ -38,15 +38,15 @@ switch(terrain_type)
         break;
         
     case terraintype.antfarm:
-        terrain_id = terrain_preset_worms(antfarm);
+        terrain_id = terrain_preset_worms(seed);
         break;
     
     case terraintype.cheese:
-        terrain_id = terrain_preset_worms(cheese);
+        terrain_id = terrain_preset_worms(seed);
         break;
         
     case terraintype.machined:
-        terrain_id = terrain_preset_worms(machined);
+        terrain_id = terrain_preset_worms(seed);
         break;
         
     default:
@@ -151,11 +151,12 @@ if (instance_exists(obj_drone))
 
 // Spawn enemies
 var total_enemies = instance_number(obj_enemy1) + instance_number(obj_enemy2);
-if (total_enemies &lt; max_enemies + floor(danger*max_enemies_bonus))
+var effective_max_enemies = max_enemies + floor(danger*max_enemies_bonus) + get_planet_level()*5;
+if (total_enemies &lt; effective_max_enemies)
 {
     if (spawn_timer &gt; 0)
     {
-        spawn_timer -= 1 + (0.50*spawn_timer_set*danger) / room_speed;
+        spawn_timer -= 1 + ((0.50*spawn_timer_set*danger) / room_speed) + (get_planet_level()/10);
     }
     else
     {
@@ -163,6 +164,10 @@ if (total_enemies &lt; max_enemies + floor(danger*max_enemies_bonus))
         spawn_random_enemy();
     }   
 }
+
+// Raise danger level
+
+danger_add(get_planet_level()/3600);
 </string>
           </argument>
         </arguments>
@@ -288,8 +293,7 @@ physics_pause_enable(global.pause);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.planet_seed = randomize();
-room_restart();
+            <string>with(obj_dropship) sanguinite = sanguinite_max;
 </string>
           </argument>
         </arguments>

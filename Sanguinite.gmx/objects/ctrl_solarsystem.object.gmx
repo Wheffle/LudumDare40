@@ -7,7 +7,153 @@
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
-  <events/>
+  <events>
+    <event eventtype="0" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>draw_set_font(font_small);
+text = "press any key to deploy dropship";
+text_width = string_width(text);
+text_height = string_height(text);
+
+var xmid = view_wview[0] div 2;
+
+portrait_x = xmid;
+portrait_y = 100;
+
+name_x = xmid;
+name_y = 130;
+
+description_x = xmid-150;
+description_w = 300;
+description_y = 160;
+
+background_hspeed[0] = 0.1;
+background_vspeed[0] = 0.025;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (keyboard_check_pressed(vk_anykey) or mouse_check_button_pressed(mb_any))
+{
+    // Start planet
+    with(obj_player_properties)
+    {
+        var p = planets[current_planet];
+        global.planet_name = p[? "name"];
+        global.planet_seed = p[? "seed"];
+        global.planet_type = p[? "type"];
+        global.planet_tile = p[? "tileset"];
+        global.planet_color = p[? "color"];
+        
+        room_goto(p[? "room"]);
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="64">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>draw_message(text_width, text_height, text, c_white);
+
+with(obj_player_properties)
+{
+    var p = planets[current_planet];
+    
+    draw_sprite_ext(p[? "sprite"], 0, other.portrait_x, other.portrait_y, 1, 1, 0, p[? "color"], 1);
+    
+    draw_set_font(font_small);
+    draw_set_color(c_white);
+    draw_set_halign(fa_center);
+    draw_text(other.name_x, other.name_y, p[? "name"]);
+    draw_set_halign(fa_left);
+    
+    if (current_planet == array_length_1d(planets)-1)
+    {
+        draw_text_ext(other.description_x, other.description_y,
+        "This is the last planet in the system. There is no sanguinite at this landing site: there is an artifact here that may have important answers. Retrieve it.",
+        -1, other.description_w);
+    }
+    else
+    {
+        switch(p[? "room"])
+        {
+            case rm_planet_small:            
+                draw_text_ext(other.description_x, other.description_y,
+                "The landing site is relatively small here. There are two target sanguinite deposits nearby. Don't forget to search for salvage to upgrade your drones.",
+                -1, other.description_w);
+                break;
+            
+            case rm_planet_med:
+                draw_text_ext(other.description_x, other.description_y,
+                "The landing site is a decent size. There are three sanguinite deposits nearby. The area may contain more salvage as well.",
+                -1, other.description_w);
+                break;
+            
+            case rm_planet_large:
+                draw_text_ext(other.description_x, other.description_y,
+                "The landing site is quite large and hostile. There are four sanguinite deposits here, some yields may be heavy. There may also be quite a bit of salvage.",
+                -1, other.description_w);
+                break;
+        }
+    }
+    
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+  </events>
   <PhysicsObject>0</PhysicsObject>
   <PhysicsObjectSensor>0</PhysicsObjectSensor>
   <PhysicsObjectShape>0</PhysicsObjectShape>
