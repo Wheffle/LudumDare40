@@ -87,8 +87,6 @@ if (instance_exists(target))
     var dir = point_direction(x, y, target.x, target.y);
     motion_add(dir, accel);
     if (speed &gt; top_speed) speed = top_speed;   
-    x += hspeed;
-    y += vspeed;
 }
 else if (speed &gt; 0)
 {
@@ -96,6 +94,8 @@ else if (speed &gt; 0)
     if (speed &lt; 0) speed = 0;
 }
 
+x += hspeed;
+y += vspeed;
 image_angle = direction;
 
 // Check collision with player
