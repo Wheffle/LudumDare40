@@ -110,6 +110,7 @@ with(obj_player_properties)
     var p = planets[current_planet];
     
     draw_sprite_ext(p[? "sprite"], 0, other.portrait_x, other.portrait_y, 1, 1, 0, p[? "color"], 1);
+    draw_sprite(s_starship, 0, other.portrait_x-60, other.portrait_y-10);
     
     draw_set_font(font_small);
     draw_set_color(c_white);

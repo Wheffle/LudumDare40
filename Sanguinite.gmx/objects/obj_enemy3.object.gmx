@@ -34,7 +34,7 @@ image_angle = random(360);
 attack_timer_set = 3*room_speed;
 attack_timer = attack_timer_set;
 
-range = 240;
+range = 260;
 </string>
           </argument>
         </arguments>

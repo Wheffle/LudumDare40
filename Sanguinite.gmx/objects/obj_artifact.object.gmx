@@ -83,6 +83,9 @@ do
 until (terrain_get_cell(grid_x, grid_y) or y &gt; room_height)
 
 falling = false;
+
+//Paint surface with a new red tile
+tile_add(tile_redhold, 0, 0, CELL, CELL, grid_x*CELL, grid_y*CELL, 9000);
 </string>
           </argument>
         </arguments>
@@ -139,8 +142,8 @@ falling = false;
     case upgradetype.hp:
         with(obj_player_properties)
         {
-            hp_max += 10;
-            with(obj_drone) hp += 10;
+            hp_max += 25;
+            with(obj_drone) hp += 25;
             show_popup("Armor upgraded", c_lime, 5);
         }
         break;
@@ -167,7 +170,7 @@ falling = false;
     case upgradetype.bombsize:
         with(obj_player_properties)
         {
-            bombsize += 0.25;
+            bombsize += 0.50;
             show_popup("Pulse radius upgraded", c_lime, 5);
         }
         break;

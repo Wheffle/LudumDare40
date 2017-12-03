@@ -16,7 +16,7 @@ draw_set_color(c_white);
 draw_roundrect(x1-4, y1-4, x2+4, y2+4, false);
 
 draw_set_color(c_black);
-draw_roundrect(x1-2, y1-2, x2+2, y2+2, false);
+draw_roundrect(x1-3, y1-2, x2+3, y2+2, false);
 
 draw_set_alpha(1);
 

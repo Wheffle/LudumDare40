@@ -57,7 +57,9 @@ name = "unknown";
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (falling)
+            <string>if (global.pause) exit;
+
+if (falling)
 {
     speed += accel;
     if (speed &gt; top_speed) speed = top_speed;
