@@ -139,6 +139,8 @@ tile_add(tile_sanguinite, 0, 0, CELL, CELL, grid_x*CELL, grid_y*CELL, 9000);
 {
     drone_id.mining_timer = mining_time;
     drone_id.mining_timer_set = mining_time;
+    drone_id.phy_speed_x = 0;
+    drone_id.phy_speed_y = 0;
     drone_id.phy_active = false;
     drone_id.x = x;
     drone_id.y = y-7;

@@ -2,23 +2,23 @@
 
 with(argument0)
 {
-    switch(object_index)
+    switch(room)
     {
-        case obj_sanguinite0:
+        case rm_planet_small:
             repeat(3)
             {
                 instance_create(x-12+random(24), y+25, obj_enemy2);
             }
             break;
         
-        case obj_sanguinite1:
+        case rm_planet_med:
             repeat(4)
             {
                 instance_create(x-12+random(24), y+25, obj_enemy2);
             }
             break;
         
-        case obj_sanguinite2:
+        case rm_planet_large:
             repeat(5)
             {
                 instance_create(x-12+random(24), y+25, obj_enemy2);

@@ -55,8 +55,28 @@ switch(terrain_type)
 }
 
 danger = 0;
-spawn_timer_set = room_speed*10;
+spawn_timer_set = room_speed*15;
 spawn_timer = spawn_timer_set;
+
+max_enemies = 0;
+max_enemies_bonus = 0;
+switch(room)
+{
+    case rm_planet_small:
+        max_enemies = 3;
+        max_enemies_bonus = 10;
+        break;
+        
+    case rm_planet_med:
+        max_enemies = 5;
+        max_enemies_bonus = 15;
+        break;
+        
+    case rm_planet_large:
+        max_enemies = 10;
+        max_enemies_bonus = 20;
+        break;
+}
 
 draw_set_font(font_small);
 message = "";
@@ -130,8 +150,8 @@ if (instance_exists(obj_drone))
 }
 
 // Spawn enemies
-var max_enemies = 5 + (danger*15);
-if (instance_number(parent_enemy) &lt; max_enemies)
+var total_enemies = instance_number(obj_enemy1) + instance_number(obj_enemy2);
+if (total_enemies &lt; max_enemies + floor(danger*max_enemies_bonus))
 {
     if (spawn_timer &gt; 0)
     {
