@@ -2,6 +2,15 @@
 
 with(obj_terrain)
 {
+    var player_grid_x = -100;
+    var player_grid_y = -100;
+    
+    with(obj_drone)
+    {
+        player_grid_x = x div CELL;
+        player_grid_y = y div CELL;
+    }
+    
     var grid_x = 0;
     var grid_y = 0;
     do
@@ -9,7 +18,8 @@ with(obj_terrain)
         var grid_x = irandom(width-1);
         var grid_y = irandom(height-1);
     }
-    until(ds_grid_get(grid, grid_x, grid_y))
+    until(ds_grid_get(grid, grid_x, grid_y) and
+          !distance_is_less(grid_x, grid_y, player_grid_x, player_grid_y, 5, false))
     
     var enemy_type = obj_enemy1;
     switch(room)

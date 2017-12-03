@@ -59,6 +59,8 @@
       <sprite>sprites\s_planet2</sprite>
       <sprite>sprites\s_planet3</sprite>
     </sprites>
+    <sprite>sprites\s_cursor</sprite>
+    <sprite>sprites\s_lightsight</sprite>
   </sprites>
   <backgrounds name="background">
     <backgrounds name="Tiles">

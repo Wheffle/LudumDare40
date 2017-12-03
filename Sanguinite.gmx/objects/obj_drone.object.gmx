@@ -68,6 +68,8 @@ flame_image_blend = c_red;
 
 rightclick_state = secondary.none;
 
+flashlight_angle = 0;
+
 set_drone_properties();
 </string>
           </argument>
@@ -226,6 +228,8 @@ else
         flame_image_index = (flame_image_index + flame_image_speed) % flame_image_number;
     }
 }
+
+flashlight_angle = point_direction(x, y, mouse_x, mouse_y);
 
 // Cargo Pickup
 if (cargo_timer &gt; 0)
@@ -388,7 +392,7 @@ switch(rightclick_state)
         break;
     
     case secondary.liftoff:
-        audio_play_sound(sfx_choose, SFX_PRIORITY, false);
+        audio_play_sound(sfx_itemget, SFX_PRIORITY, false);
         with(obj_dropship)
         {
             takeoff = true;
@@ -453,7 +457,9 @@ if (fire_timer &lt;= 0)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_self();
+            <string>draw_sprite_ext(s_lightsight, 0, x, y, 1, 1, flashlight_angle, c_white, 1);
+
+draw_self();
 
 if (thrusting)
 {

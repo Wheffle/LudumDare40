@@ -29,8 +29,17 @@
 
 image_speed = 0.10;
 
-accel = 0.05;
-top_speed = 3;
+accel = 0.03;
+top_speed = 1.5;
+
+if (room != rm_planet_small)
+{
+    accel = 0.4;
+    top_speed = 2.5;
+}
+
+direction = random(360);
+speed = 1;
 </string>
           </argument>
         </arguments>
