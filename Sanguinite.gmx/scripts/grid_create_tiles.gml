@@ -24,7 +24,8 @@ with(obj_terrain) {
                 // Create tile
                 var tile_left = CELL*(tileidx mod 4);
                 var tile_top = CELL*floor(tileidx / 4);
-                tile_add(terrain_graphic, tile_left, tile_top, CELL, CELL, CELL*i, CELL*j, 10000);
+                var tile = tile_add(terrain_graphic, tile_left, tile_top, CELL, CELL, CELL*i, CELL*j, 10000);
+                tile_set_blend(tile, terrain_color);
             }
         }
     }

@@ -13,6 +13,7 @@
     <sprite>sprites\s_dropship</sprite>
     <sprite>sprites\s_dropship_flame</sprite>
     <sprite>sprites\s_artifact</sprite>
+    <sprite>sprites\s_secrets</sprite>
     <sprite>sprites\s_enemy1</sprite>
     <sprite>sprites\s_enemy2</sprite>
     <sprite>sprites\s_enemy3</sprite>
@@ -29,6 +30,11 @@
       <sprite>sprites\portrait_thruster</sprite>
       <sprite>sprites\portrait_sanguinite</sprite>
       <sprite>sprites\portrait_bomb</sprite>
+    </sprites>
+    <sprites name="Planets">
+      <sprite>sprites\s_planet1</sprite>
+      <sprite>sprites\s_planet2</sprite>
+      <sprite>sprites\s_planet3</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -100,6 +106,8 @@
       <script>scripts\spawn_enemy_wave.gml</script>
       <script>scripts\show_popup.gml</script>
       <script>scripts\get_drones_left.gml</script>
+      <script>scripts\get_planet_level.gml</script>
+      <script>scripts\is_last_level.gml</script>
     </scripts>
     <scripts name="Utility">
       <script>scripts\ceil2.gml</script>
@@ -118,6 +126,10 @@
       <script>scripts\draw_portrait.gml</script>
       <script>scripts\draw_message.gml</script>
     </scripts>
+    <scripts name="Solarsystem">
+      <script>scripts\new_planet.gml</script>
+      <script>scripts\new_name_list.gml</script>
+    </scripts>
   </scripts>
   <fonts name="fonts">
     <font>fonts\font_small</font>
@@ -126,6 +138,7 @@
     <object>objects\ctrl_init</object>
     <object>objects\ctrl_planet</object>
     <object>objects\ctrl_title</object>
+    <object>objects\ctrl_intro</object>
     <object>objects\ctrl_solarsystem</object>
     <object>objects\ctrl_win</object>
     <object>objects\ctrl_lose</object>
@@ -145,6 +158,7 @@
       <object>objects\parent_item</object>
       <object>objects\obj_drone_dead</object>
       <object>objects\obj_artifact</object>
+      <object>objects\obj_secrets</object>
       <object>objects\obj_sanguinite0</object>
       <object>objects\obj_sanguinite1</object>
       <object>objects\obj_sanguinite2</object>
@@ -165,9 +179,9 @@
   <rooms name="rooms">
     <room>rooms\rm_init</room>
     <room>rooms\rm_title</room>
+    <room>rooms\rm_intro</room>
     <room>rooms\rm_solarsystem</room>
-    <room>rooms\rm_win</room>
-    <room>rooms\rm_lose</room>
+    <room>rooms\rm_outro</room>
     <room>rooms\rm_planet_small</room>
     <room>rooms\rm_planet_med</room>
     <room>rooms\rm_planet_large</room>

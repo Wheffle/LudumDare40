@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// Set up gui surface
+            <string>randomize();
+
+// Set up gui surface
 surface_resize(application_surface, view_wview[0], view_hview[0]);
 display_set_gui_size(view_wview[0], view_hview[0]);
 
@@ -80,7 +82,6 @@ enum secondary
     liftoff
 }
 
-instance_create(0, 0, obj_player_properties);
 room_goto(rm_title);
 </string>
           </argument>

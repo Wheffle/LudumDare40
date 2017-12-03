@@ -27,13 +27,13 @@
             <kind>1</kind>
             <string>event_inherited();
 
-hp = 10;
+hp = 20;
 image_speed = 1/30;
 
 accel = 0.02;
 top_speed = 0.5;
 
-bullet_timer_set = 3*room_speed;
+bullet_timer_set = room_speed;
 bullet_timer = bullet_timer_set;
 
 range = 240;
