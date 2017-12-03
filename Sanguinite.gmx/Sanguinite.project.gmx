@@ -24,6 +24,10 @@
       <sound>sound\sfx_choose</sound>
       <sound>sound\sfx_heavythruster</sound>
     </sounds>
+    <sounds name="Music">
+      <sound>sound\m_theme</sound>
+      <sound>sound\m_mission</sound>
+    </sounds>
   </sounds>
   <sprites name="sprites">
     <sprite>sprites\s_square</sprite>
@@ -153,10 +157,18 @@
       <script>scripts\draw_bar.gml</script>
       <script>scripts\draw_portrait.gml</script>
       <script>scripts\draw_message.gml</script>
+      <script>scripts\draw_planet.gml</script>
     </scripts>
     <scripts name="Solarsystem">
       <script>scripts\new_planet.gml</script>
       <script>scripts\new_name_list.gml</script>
+    </scripts>
+    <scripts name="Music">
+      <script>scripts\music_init.gml</script>
+      <script>scripts\music_free.gml</script>
+      <script>scripts\music_play.gml</script>
+      <script>scripts\music_stop.gml</script>
+      <script>scripts\music_set_gain.gml</script>
     </scripts>
   </scripts>
   <fonts name="fonts">
@@ -164,10 +176,10 @@
   </fonts>
   <objects name="objects">
     <object>objects\ctrl_init</object>
-    <object>objects\ctrl_planet</object>
     <object>objects\ctrl_title</object>
     <object>objects\ctrl_intro</object>
     <object>objects\ctrl_solarsystem</object>
+    <object>objects\ctrl_planet</object>
     <object>objects\ctrl_outro</object>
     <objects name="Terrain">
       <object>objects\obj_terrain</object>
@@ -202,6 +214,9 @@
       <object>objects\parent_vfx</object>
       <object>objects\vfx_moon</object>
       <object>objects\vfx_bomb</object>
+    </objects>
+    <objects name="Music">
+      <object>objects\music_system</object>
     </objects>
   </objects>
   <rooms name="rooms">

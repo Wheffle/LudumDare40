@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>title_x = (view_wview[0] div 2) - (background_get_width(bg_title) div 2);
+            <string>music_play(m_theme);
+
+title_x = (view_wview[0] div 2) - (background_get_width(bg_title) div 2);
 title_y = 100;
 
 draw_set_font(font_small);

@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_font(font_small);
+            <string>music_play(m_theme);
+
+draw_set_font(font_small);
 text = "press any key to continue";
 text_width = string_width(text);
 text_height = string_height(text);

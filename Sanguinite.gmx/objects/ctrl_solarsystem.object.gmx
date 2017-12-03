@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_font(font_small);
+            <string>music_play(m_theme);
+
+draw_set_font(font_small);
 text = "press any key to deploy dropship";
 text_width = string_width(text);
 text_height = string_height(text);
@@ -132,7 +134,7 @@ with(obj_player_properties)
         {
             case rm_planet_small:            
                 draw_text_ext(other.description_x, other.description_y,
-                "The landing site is relatively small here. There are two target sanguinite deposits nearby. Don't forget to search for salvage to upgrade your drones.",
+                "The landing site is relatively small here. There are two target sanguinite deposits nearby. Don't forget to search for salvage to upgrade your drones.##Pick up items with your drone and bring them back to the ship to retrieve them.",
                 -1, other.description_w);
                 break;
             

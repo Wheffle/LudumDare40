@@ -34,7 +34,7 @@ top_speed = 1.5;
 
 if (room != rm_planet_small)
 {
-    accel = 0.4;
+    accel = 0.04;
     top_speed = 2.5;
 }
 

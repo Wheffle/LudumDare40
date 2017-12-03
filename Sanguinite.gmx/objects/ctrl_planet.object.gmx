@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>surf_gui = noone;
+            <string>music_play(m_mission);
+
+surf_gui = noone;
 
 seed = global.planet_seed;
 terrain_type = global.planet_type;
