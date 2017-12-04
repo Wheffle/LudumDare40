@@ -159,7 +159,7 @@ if (instance_exists(obj_drone))
 }
 
 // Spawn enemies
-var total_enemies = instance_number(obj_enemy1) + instance_number(obj_enemy2);
+var total_enemies = instance_number(obj_enemy1) + instance_number(obj_enemy4);
 var effective_max_enemies = max_enemies + floor(danger*max_enemies_bonus) + get_planet_level()*5;
 if (total_enemies &lt; effective_max_enemies)
 {
@@ -316,7 +316,10 @@ physics_pause_enable(global.pause);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>with(obj_dropship) sanguinite = sanguinite_max;
+            <string>if (debug_mode)
+{
+    with(obj_dropship) sanguinite = sanguinite_max;
+}
 </string>
           </argument>
         </arguments>

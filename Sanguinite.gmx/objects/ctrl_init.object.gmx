@@ -45,7 +45,7 @@ global.planet_room = rm_planet_small;
 
 // Init music system
 music_init(MUSIC_PRIORITY, 1000);
-music_set_gain(0.50);
+music_set_gain(0.75);
 
 // Set up enums
 enum terraingen
