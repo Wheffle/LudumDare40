@@ -134,19 +134,19 @@ with(obj_player_properties)
         {
             case rm_planet_small:            
                 draw_text_ext(other.description_x, other.description_y,
-                "The landing site is relatively small here. There are two target sanguinite deposits nearby. Don't forget to search for salvage to upgrade your drones.##Pick up items with your drone and bring them back to the ship to retrieve them.",
+                "The landing site is relatively small here. There are two target sanguinite deposits nearby. Don't forget to search for salvage to upgrade your drones.##Pick up items with your drone and bring them back to the dropship to retrieve them. Remember, exploration is rewarded!",
                 -1, other.description_w);
                 break;
             
             case rm_planet_med:
                 draw_text_ext(other.description_x, other.description_y,
-                "The landing site is a decent size. There are three sanguinite deposits nearby. The area may contain more salvage as well.",
+                "The landing site is a decent size. There are three sanguinite deposits nearby. The area may contain more salvage as well.##Removing salvage and especially mining sanguinite seems to be enraging the native life. Expect more intense resistance the more salvage you pick up.",
                 -1, other.description_w);
                 break;
             
             case rm_planet_large:
                 draw_text_ext(other.description_x, other.description_y,
-                "The landing site is quite large and hostile. There are four sanguinite deposits here, some yields may be heavy. There may also be quite a bit of salvage.",
+                "The landing site is quite large and hostile. There are four sanguinite deposits here, some yields may be heavy. There may also be quite a bit of salvage.##The creatures here are already swarming due to your activity at previous planets. There must be communication between them somehow.",
                 -1, other.description_w);
                 break;
         }
