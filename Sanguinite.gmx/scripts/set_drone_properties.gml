@@ -7,7 +7,6 @@ with(obj_player_properties)
 {
     other.thrust_force = thrust_force;
     other.hp_max = hp_max;
-    other.hp = hp_max;
     other.firepower = firepower;
     other.firespeed = firespeed;
     other.fire_timer_set = fire_timer_set;

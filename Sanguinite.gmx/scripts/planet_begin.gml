@@ -76,9 +76,21 @@ with(obj_terrain)
             var pocket = list[| i];
             with(pocket)
             {
-                var first = ds_map_find_first(set);
-                var grid_x = string_to_coor_x(first);
-                var grid_y = string_to_coor_y(first);
+                var xys = ds_map_find_first(set);
+                var xys_list = ds_list_create();
+                
+                while(!is_undefined(xys))
+                {
+                    ds_list_add(xys_list, xys);
+                    xys = ds_map_find_next(set, xys);
+                }
+                
+                ds_list_shuffle(xys_list);
+                xys = xys_list[| 0];
+                ds_list_destroy(xys_list);
+                
+                var grid_x = string_to_coor_x(xys);
+                var grid_y = string_to_coor_y(xys);
                 
                 var xx = grid_x*CELL + cell_half;
                 var yy = grid_y*CELL + cell_half;

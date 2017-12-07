@@ -28,6 +28,8 @@
             <string>image_speed = 0;
 image_index = 0;
 
+phy_speed_prev = 0;
+
 thrust_force = 40;
 thrust_angle = 0;
 thrusting = false;
@@ -71,6 +73,7 @@ rightclick_state = secondary.none;
 flashlight_angle = 0;
 
 set_drone_properties();
+hp = hp_max;
 </string>
           </argument>
         </arguments>
@@ -136,6 +139,8 @@ if (cargo != noone)
         item_get();
     }
 }
+
+phy_speed_prev = phy_speed;
 </string>
           </argument>
         </arguments>
@@ -276,10 +281,10 @@ else
 // Outside Room
 if (phy_position_x &lt; 0)
 {
-    phy_position_x = 0;
+    phy_position_x = 1;
     phy_speed_x = 0;
 }
-else if (phy_position_x &gt;= room_width-1)
+else if (phy_position_x &gt; room_width-1)
 {
     phy_position_x = room_width-2;
     phy_speed_x = 0;
@@ -287,15 +292,14 @@ else if (phy_position_x &gt;= room_width-1)
 
 if (phy_position_y &lt; 0)
 {
-    phy_position_y = 0;
+    phy_position_y = 1;
     phy_speed_y = 0;
 }
-else if (phy_position_y &gt;= room_height-1)
+else if (phy_position_y &gt; room_height-1)
 {
     phy_position_y = room_height-2;
     phy_speed_y = 0;
 }
-
 </string>
           </argument>
         </arguments>
@@ -318,8 +322,8 @@ else if (phy_position_y &gt;= room_height-1)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var prev_speed = point_distance(phy_position_xprevious, phy_position_yprevious, phy_position_x, phy_position_y);
-var collision_energy = abs(prev_speed - phy_speed);
+            <string>var collision_energy = abs(phy_speed_prev - phy_speed);
+show_debug_message("prev speed: " + string(phy_speed_prev) + ", curr_speed: " + string(phy_speed));
 
 
 if (collision_energy &gt;= 0.5)
