@@ -323,8 +323,6 @@ else if (phy_position_y &gt; room_height-1)
           <argument>
             <kind>1</kind>
             <string>var collision_energy = abs(phy_speed_prev - phy_speed);
-show_debug_message("prev speed: " + string(phy_speed_prev) + ", curr_speed: " + string(phy_speed));
-
 
 if (collision_energy &gt;= 0.5)
 {
