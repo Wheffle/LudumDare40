@@ -96,7 +96,7 @@ draw_set_color(c_yellow);
 draw_text(4, view_hview[0]-14, "Created for Ludum Dare 40");
 
 draw_set_color(c_white);
-draw_text(view_wview[0]-50, view_hview[0]-14, "v." + VERSION);
+draw_text(view_wview[0]-50, view_hview[0]-14, "v" + VERSION);
 </string>
           </argument>
         </arguments>
