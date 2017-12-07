@@ -78,14 +78,14 @@ var grid_y = 0;
 do
 {
     y++;
-    grid_y = (y+8) div CELL;
+    grid_y = bbox_bottom div CELL;
 }
 until (terrain_get_cell(grid_x, grid_y) or y &gt; room_height)
 
 falling = false;
 
 //Paint surface with a new red tile
-tile_add(tile_redhold, 0, 0, CELL, CELL, grid_x*CELL, grid_y*CELL, 9000);
+tile_add(tile_redhold, 3, 3, CELL, CELL, grid_x*CELL, grid_y*CELL, 9000);
 </string>
           </argument>
         </arguments>

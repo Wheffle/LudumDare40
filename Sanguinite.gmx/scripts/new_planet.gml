@@ -2,7 +2,7 @@
 
 var map = ds_map_create();
 map[? "name"] = argument0;
-map[? "seed"] = randomize();
+map[? "seed"] = random(65536);
 map[? "type"] = choose(
     terraintype.worms,
     terraintype.antfarm,

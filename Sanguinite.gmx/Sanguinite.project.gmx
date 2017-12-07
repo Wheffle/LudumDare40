@@ -44,7 +44,9 @@
     <sprite>sprites\s_enemy4</sprite>
     <sprite>sprites\s_bullet</sprite>
     <sprite>sprites\s_part_moon</sprite>
-    <sprite>sprites\s_sanguinite</sprite>
+    <sprite>sprites\s_sanguinite0</sprite>
+    <sprite>sprites\s_sanguinite1</sprite>
+    <sprite>sprites\s_sanguinite2</sprite>
     <sprite>sprites\s_part_bomb</sprite>
     <sprite>sprites\s_starship</sprite>
     <sprites name="Potraits">
@@ -236,7 +238,7 @@
     <constant name="EV_ITEM_DROP">1</constant>
     <constant name="EV_ITEM_PICKUP">0</constant>
     <constant name="CELL">25</constant>
-    <constant name="VERSION">"1.00"</constant>
+    <constant name="VERSION">"1.0.1"</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>

@@ -55,9 +55,14 @@ gain = 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (audio_exists(current_track_id))
+            <string>/*if (audio_exists(current_track_id))
 {
     audio_stop_sound(current_track_id);
+}*/
+
+if (audio_exists(current_music))
+{
+    audio_stop_sound(current_music);
 }
 
 if (next_music != noone &amp;&amp; audio_exists(next_music))
