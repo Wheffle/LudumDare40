@@ -259,7 +259,7 @@
     <option_html5_texture_page>2048</option_html5_texture_page>
     <option_html5_use_test_ads>0</option_html5_use_test_ads>
     <option_html5_usebuiltinparticles>False</option_html5_usebuiltinparticles>
-    <option_html5_usesplash>False</option_html5_usesplash>
+    <option_html5_usesplash>True</option_html5_usesplash>
     <option_icon>nil</option_icon>
     <option_in_app_purchase_sandbox_mode>0</option_in_app_purchase_sandbox_mode>
     <option_information>Created for Ludum Dare 40.</option_information>

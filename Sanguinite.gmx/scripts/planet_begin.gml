@@ -29,35 +29,41 @@ with(obj_terrain)
 
     // Create items
     var cell_half = CELL div 2;
+    
     if (is_last_level())
     {
-        var deepest = "";
-        var deepest_y = 0;
-        with(obj_pocket)
+        // Get a random empty spot on the lowest possible row
+    
+        var xlist = ds_list_create();
+        for (var i = 0; i < width; i++)
         {
-            if (string_length(deepest) == 0)
+            ds_list_add(xlist, i);
+        }
+        ds_list_shuffle(xlist);
+        
+        var xx = 0;
+        var yy = 0;
+        var found = false;
+        for (var j = height-1; j >= 0; j--)
+        {
+            for (var xi = 0; xi < ds_list_size(xlist); xi++)
             {
-                deepest = ds_map_find_first(set);
-                deepest_y = string_to_coor_y(deepest);
-            }
-            else
-            {
-                var xys = ds_map_find_first(set);
-                var yy = string_to_coor_y(xys);
+                var grid_x = xlist[| xi];
+                var grid_y = j;
                 
-                if (yy > deepest_y)
+                if (!ds_grid_get(grid, grid_x, grid_y))
                 {
-                    deepest = xys;
-                    deepest_y = yy;
+                    found = true;
+                    xx = grid_x*CELL + cell_half;
+                    yy = grid_y*CELL + cell_half;
+                    break;
                 }
-            }   
+            }
+            
+            if (found) break;
         }
         
-        var grid_x = string_to_coor_x(deepest);
-        var grid_y = string_to_coor_y(deepest);
-        
-        var xx = grid_x*CELL + cell_half;
-        var yy = grid_y*CELL + cell_half;
+        ds_list_destroy(xlist);
         
         instance_create(xx, yy, obj_secrets);
     }
